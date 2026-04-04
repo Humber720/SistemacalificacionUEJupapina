@@ -1,0 +1,190 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY GENERAL */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ENCABEZADO */
+header {
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+}
+
+/* CONTENEDOR */
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* CAJA LOGIN */
+.login-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px 25px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    animation: aparecer 0.6s ease;
+}
+
+/* ANIMACIÓN */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TITULOS */
+.login-box h3 {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.login-box h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* TEXTO INFO */
+.info {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* LABEL */
+label {
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+/* INPUT CONTENEDOR */
+.input-container {
+    position: relative;
+}
+
+/* INPUT */
+input {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+/* EFECTO INPUT */
+input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52,152,219,0.5);
+}
+
+/* ICONO OJO */
+.toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    transition: 0.3s;
+}
+
+.toggle:hover {
+    color: #3498db;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* BOTÓN */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* EFECTO BOTÓN */
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* MENSAJE */
+#mensaje {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* ========================= */
+/* 📱 RESPONSIVE (CELULAR) */
+/* ========================= */
+@media (max-width: 480px) {
+
+    .login-box {
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    input {
+        font-size: 14px;
+        padding: 10px 35px 10px 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}

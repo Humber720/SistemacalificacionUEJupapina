@@ -1,0 +1,220 @@
+/* ============================= */
+/* CONTENIDO PRINCIPAL */
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* ============================= */
+/* TITULOS CENTRADOS */
+.container h3, .container h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.container p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* ============================= */
+/* BOTÓN LIBRETA */
+.container button {
+  padding: 10px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+}
+
+.container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* ============================= */
+/* MODAL DESCARGA */
+.modal-descarga {
+  display: none;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+  z-index: 1000;
+}
+
+.modal-descarga button {
+  background: #27ae60;
+  margin: 8px;
+}
+
+.modal-descarga button:hover {
+  background: #2ecc71;
+}
+
+/* ============================= */
+/* INFORMACIÓN DEL ESTUDIANTE */
+.student-info {
+  background-color: #f1f6f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.student-info h2 {
+  font-size: 22px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.student-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.student-info td {
+  font-size: 16px;
+  color: #34495e;
+  padding: 8px 12px;
+}
+
+/* ============================= */
+/* TABLAS DE CALIFICACIONES */
+.grades-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+  font-size: 15px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.grades-table caption {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+}
+
+.grades-table th, .grades-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.grades-table th {
+  background-color: #2980b9;
+  color: #fff;
+  text-align: center;
+}
+
+.grades-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.grades-table tr:nth-child(even) {
+  background-color: #f2f8fc;
+}
+
+.grades-table tr:hover {
+  background-color: #d0ebff;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+/* BOTONES PARA DESCARGAR PDF*/
+.btn-ver, .btn-descargar {
+  padding: 10px 18px;
+  margin: 5px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+}
+
+.btn-ver {
+  background-color: #3498db;
+}
+
+.btn-descargar {
+  background-color: #27ae60;
+}
+
+/* VISOR PDF */
+.visor-container {
+  width: 100%;
+  height: 500px;
+  margin-top: 20px;
+}
+
+#visorLibreta {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .visor-container {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .visor-container {
+    height: 300px;
+  }
+}
+
+/* ============================= */
+/* RESPONSIVE PARA CELULAR */
+@media screen and (max-width: 768px) {
+  .student-info h2 {
+    font-size: 20px;
+  }
+
+  .grades-table th, .grades-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .container button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .student-info table td {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .grades-table {
+    font-size: 13px;
+  }
+}

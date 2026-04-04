@@ -1,0 +1,120 @@
+/* ============================= */
+/* CONTENIDO PRINCIPAL (después del header) */
+.container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* ============================= */
+/* INFORMACIÓN DEL ESTUDIANTE */
+.student-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.student-info h2 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+/* Flex container para datos del estudiante */
+.student-details {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: nowrap; /* Desktop: todo en una línea */
+  margin-top: 10px;
+}
+
+.student-details div {
+  min-width: 150px;
+  text-align: center;
+  font-size: 16px;
+  color: #34495e;
+  background-color: #ecf0f1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* ============================= */
+/* TABLA DE CALIFICACIONES */
+.grades-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.grades-table caption {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #2980b9;
+}
+
+.grades-table th,
+.grades-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.grades-table th {
+  background-color: #2980b9;
+  color: #fff;
+  text-align: center;
+}
+
+.grades-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.grades-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.grades-table tr:hover {
+  background-color: #d0e7ff;
+}
+
+/* ============================= */
+/* RESPONSIVE PARA MOVILES */
+@media screen and (max-width: 768px) {
+  .student-info h2 {
+    font-size: 20px;
+  }
+
+  .grades-table th,
+  .grades-table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .student-details {
+    flex-wrap: wrap; /* permite que los bloques se acomoden */
+    gap: 10px;
+  }
+
+  /* Curso ocupa toda la primera línea */
+  .student-details .curso {
+    flex-basis: 100%;
+  }
+
+  /* Instrumento y Código quedan en la segunda línea */
+  .student-details .instrumento,
+  .student-details .codigo {
+    flex: 1; /* comparten el espacio */
+  }
+}

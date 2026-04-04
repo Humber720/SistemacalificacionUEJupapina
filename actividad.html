@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Plataforma de Calificación</title>
+    <!-- CSS para la cabecera -->
+    <link rel="stylesheet" href="cabecera.css" />
+    <!-- CSS general de la página -->
+    <link rel="stylesheet" href="actividad.css" />
+    <script src="menu.js"></script>
+</head>
+<body>
+   <!-- ================= HEADER ================= -->
+  <header class="encabezado">
+    <div class="encabezado-container">
+
+      <!-- LOGO -->
+      <div class="encabezado-logo">
+        <div class="logo-icono">🎵</div>
+        <span class="encabezado-titulo">Educación Musical</span>
+      </div>
+
+      <!-- MENÚ SCROLL -->
+      <div class="menu-scroll-contenedor">
+
+        <button class="flecha izquierda" onclick="scrollMenu(-150)">‹</button>
+
+        <nav class="menu-scroll" id="menuScroll">
+          <a href="menu.html">Inicio</a>
+          <a href="actividad.html">Actividades</a>
+          <a href="calificacion.html">Calificación</a>
+          <a href="libreta.html">Libretas</a>
+          <a href="banda.html">Banda</a>
+        </nav>
+
+        <button class="flecha derecha" onclick="scrollMenu(150)">›</button>
+
+      </div>
+
+      <!-- 👇 BOTÓN APARTE -->
+      <button class="menu-lateral-btn" onclick="location.href='lateral.html'">
+        ☰
+      </button>
+
+      <!-- PERFIL -->
+      <div class="perfil-wrapper">
+        <div class="encabezado-perfil">
+
+          <button id="dropdownToggle" class="encabezado-perfil-btn">
+            <div class="avatar-circle">👤</div>
+            <span id="student-name" class="encabezado-nombre">Estudiante</span>
+          </button>
+
+          <!-- DROPDOWN -->
+          <div id="dropdownMenu" class="menu-dropdown">
+            <div class="info">
+              <p><strong>Nombre:</strong> <span id="nombreCompleto">--</span></p>
+              <p><strong>Curso:</strong> <span id="course-name">--</span></p>
+            </div>
+
+            <button onclick="cerrarSesion()" class="cerrar">
+              Cerrar sesión
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= CONTENIDO ================= -->
+    <section id="contenido" class="seccion activa">
+      <h2>Actividades de apoyo</h2>
+
+      <div class="contenido-interactivo">
+
+        <!-- PRIMERO -->
+        <div class="curso-contenido primero">
+          <h3>Actividad 1 - 1ro</h3>
+          <p>🎵 Tema: Sopa de letras</p>
+          <iframe src="link1" width="100%" height="400"></iframe>
+        </div>
+
+        <!-- SEGUNDO -->
+        <div class="curso-contenido segundo">
+          <h3>Actividad 1 - 2do</h3>
+          <p>🎵 Tema 1: Crucigrama</p>
+          <iframe src="link2" width="100%" height="400"></iframe>
+        </div>
+        <div class="curso-contenido segundo">
+          <h3>Actividad 2 - 2do</h3>
+          <p>🎵 Tema 2: Sopa de Letras</p>
+          <iframe src="link2" width="100%" height="400"></iframe>
+        </div>
+        <div class="curso-contenido segundo">
+          <h3>Actividad 3 - 2do</h3>
+          <p>🎵 Tema 3: Juego Kuzizz</p>
+          <iframe src="link2" width="100%" height="400"></iframe>
+        </div>
+
+        <!-- TERCERO -->
+        <div class="curso-contenido tercero">
+          <h3>Actividad 1 - 3ro</h3>
+          <p>🎵 Tema: Kahoot</p>
+          <iframe src="link3" width="100%" height="400"></iframe>
+        </div>
+
+      </div>
+    </section>
+    
+    <!-- SECCIÓN PARA SUBIR TAREAS -->
+    <div class="formulario-drive">
+      <h3>📤 Subir tarea</h3>
+      <iframe src="TU_FORM" width="100%" height="500"></iframe>
+    </div>
+
+ <!-- Sección Autoevaluación -->
+ <section id="autoevaluacion" class="seccion">
+  <h2>Autoevaluación</h2>
+  <p>
+    📋 <strong>Estimado estudiante:</strong><br>
+    Realiza tu autoevaluación y califícate de manera honesta.  
+    Ingresa únicamente una vez utilizando tu número de cédula de identidad.
+  </p>  
+  <div class="iframe-container">
+    <iframe src="https://humber720.github.io/autoevaluacion/" frameborder="0" width="100%" height="600px"></iframe>
+  </div>
+</section>
+
+    <!-- Script para cargar las notas y manejar la sesión -->
+    <script src="actividad.js"></script> 
+</body>
+</html>

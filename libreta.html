@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Plataforma de Calificación</title>
+    <!-- CSS para la cabecera -->
+    <link rel="stylesheet" href="cabecera.css" />
+    <!-- CSS general de la página -->
+    <link rel="stylesheet" href="libreta.css" />
+    <script src="menu.js"></script>
+    <script src="cabecera.js"></script>
+</head>
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="encabezado">
+    <div class="encabezado-container">
+
+      <!-- LOGO -->
+      <div class="encabezado-logo">
+        <div class="logo-icono">🎵</div>
+        <span class="encabezado-titulo">Educación Musical</span>
+      </div>
+
+      <!-- MENÚ SCROLL -->
+      <div class="menu-scroll-contenedor">
+
+        <button class="flecha izquierda" onclick="scrollMenu(-150)">‹</button>
+
+        <nav class="menu-scroll" id="menuScroll">
+          <a href="menu.html">Inicio</a>
+          <a href="actividad.html">Actividades</a>
+          <a href="calificacion.html">Calificación</a>
+          <a href="libreta.html">Libretas</a>
+          <a href="banda.html">Banda</a>
+        </nav>
+
+        <button class="flecha derecha" onclick="scrollMenu(150)">›</button>
+
+      </div>
+
+      <!-- 👇 BOTÓN APARTE -->
+      <button class="menu-lateral-btn" onclick="location.href='lateral.html'">
+        ☰
+      </button>
+
+      <!-- PERFIL -->
+      <div class="perfil-wrapper">
+        <div class="encabezado-perfil">
+
+          <button id="dropdownToggle" class="encabezado-perfil-btn">
+            <div class="avatar-circle">👤</div>
+            <span id="student-name" class="encabezado-nombre">Estudiante</span>
+          </button>
+
+          <!-- DROPDOWN -->
+          <div id="dropdownMenu" class="menu-dropdown">
+            <div class="info">
+              <p><strong>Nombre:</strong> <span id="nombreCompleto">--</span></p>
+              <p><strong>Curso:</strong> <span id="course-name">--</span></p>
+            </div>
+
+            <button onclick="cerrarSesion()" class="cerrar">
+              Cerrar sesión
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= CONTENIDO ================= -->
+<!-- PARA CARGAR NOTAS DE REPROBACIÓN -->
+    <div class="container">
+          <!-- Encabezado con nombre del estudiante y curso -->
+          <div class="student-info">
+            <h2>ESTUDIANTE: <span id="student-name"></span></h2>
+        
+            <table style="width:100%;">
+              <tr>
+              <td><strong>Curso:</strong> <span id="course-name"></span></td>
+              <td style="text-align:center;"><strong>Descripción:</strong> <span id="descripcion-name"></span></td>
+              </tr>
+            </table>
+          </div>
+        <!-- Tabla de calificaciones -->
+        <!-- PRIMER TRIMESTRE -->
+        <table class="grades-table">
+          <caption><b>INFORMACIÓN DE ÁREAS REPROBADOS PRIMER TRIMESTRE</b></caption>
+          <thead>
+            <tr>
+              <th>ASIGNATURAS</th>
+              <th>CALIFICACIÓN</th>
+              <th>ESTADO</th>
+              <th>OBSERVACIÓN</th>
+            </tr>
+          </thead>
+          <tbody id="grades-trim-1"></tbody>
+        </table>
+        <!-- SEGUNDO TRIMESTRE -->
+        <table class="grades-table">
+          <caption><b>INFORMACIÓN DE ÁREAS REPROBADOS SEGUNDO TRIMESTRE</b></caption>
+          <thead>
+            <tr>
+              <th>ASIGNATURAS</th>
+              <th>CALIFICACIÓN</th>
+              <th>ESTADO</th>
+              <th>OBSERVACIÓN</th>
+            </tr>
+          </thead>
+          <tbody id="grades-trim-2"></tbody>
+        </table>
+          <!-- TERCER TRIMESTRE -->
+          <table class="grades-table">
+            <caption><b>INFORMACIÓN DE ÁREAS REPROBADOS TERCER TRIMESTRE</b></caption>
+            <thead>
+              <tr>
+                <th>ASIGNATURAS</th>
+                <th>CALIFICACIÓN</th>
+                <th>ESTADO</th>
+                <th>OBSERVACIÓN</th>
+              </tr>
+            </thead>
+            <tbody id="grades-trim-3"></tbody>
+          </table>
+    </div>
+
+        <!-- PARA DESCARGAR LIBRETA -->
+    <div class="container">
+
+      <h3 style="text-align:center;">
+        LIBRETA ELECTRÓNICA ESCOLAR
+      </h3>
+
+      <div style="text-align:center; margin: 15px 0;">
+        <button onclick="verLibreta()" class="btn-ver">📘 Ver Libreta</button>
+        <button onclick="descargarLibreta()" class="btn-descargar">⬇ Descargar</button>
+      </div>
+
+      <p style="font-size:16px; line-height:1.6; color:#333;">
+        👨‍👩‍👧‍👦 <strong>Estimado(a) padre, madre o tutor:</strong>  
+        Visualice o descargue la <strong>Libreta Electrónica</strong> para conocer las 
+        <strong>notas de todas las áreas</strong> del estudiante durante toda la gestión.  
+        📥 Manténgase informado sobre su progreso académico.
+      </p>
+
+      <!-- VISOR PDF -->
+      <div class="visor-container">
+        <iframe id="visorLibreta" src=""></iframe>
+      </div>
+    </div>
+    <!-- Script para cargar las notas y manejar la sesión -->
+    <script src="libreta.js"></script> 
+</body>
+</html>

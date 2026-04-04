@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Plataforma de Calificación</title>
+<!-- CSS para la cabecera -->
+<link rel="stylesheet" href="cabecera.css" />
+<link rel="stylesheet" href="banda.css" /> 
+       <script src="menu.js"></script>    
+</head>
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="encabezado">
+    <div class="encabezado-container">
+
+      <!-- LOGO -->
+      <div class="encabezado-logo">
+        <div class="logo-icono">🎵</div>
+        <span class="encabezado-titulo">Educación Musical</span>
+      </div>
+
+      <!-- MENÚ SCROLL -->
+      <div class="menu-scroll-contenedor">
+
+        <button class="flecha izquierda" onclick="scrollMenu(-150)">‹</button>
+
+        <nav class="menu-scroll" id="menuScroll">
+          <a href="menu.html">Inicio</a>
+          <a href="actividad.html">Actividades</a>
+          <a href="calificacion.html">Calificación</a>
+          <a href="libreta.html">Libretas</a>
+          <a href="banda.html">Banda</a>
+        </nav>
+
+        <button class="flecha derecha" onclick="scrollMenu(150)">›</button>
+
+      </div>
+
+      <!-- 👇 BOTÓN APARTE -->
+<button class="menu-lateral-btn" onclick="toggleMenu()">
+  ☰
+</button>
+
+      <!-- PERFIL -->
+      <div class="perfil-wrapper">
+        <div class="encabezado-perfil">
+
+          <button id="dropdownToggle" class="encabezado-perfil-btn">
+            <div class="avatar-circle">👤</div>
+            <span id="student-name" class="encabezado-nombre">Estudiante</span>
+          </button>
+
+          <!-- DROPDOWN -->
+          <div id="dropdownMenu" class="menu-dropdown">
+            <div class="info">
+              <p><strong>Nombre:</strong> <span id="nombreCompleto">--</span></p>
+              <p><strong>Curso:</strong> <span id="course-name">--</span></p>
+            </div>
+
+            <button onclick="cerrarSesion()" class="cerrar">
+              Cerrar sesión
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </header>
+ 
+    <!-- Contenido principal entrevista -->
+    <div class="container">
+        <!--  nombre del estudiante y curso -->
+<div class="student-info">
+  <h2>ESTUDIANTE: <span id="student-name-main"></span></h2>
+  <div class="student-details">
+    <div class="curso"><strong>Curso:</strong> <span id="course-name-main"></span></div>
+    <div class="instrumento"><strong>Instrumento musical:</strong> <span id="instrument-name"></span></div>
+    <div class="codigo"><strong>Código:</strong> <span id="codigo-name"></span></div>
+  </div>
+</div>
+        <!-- Tabla de calificaciones -->
+        <table class="grades-table">
+          <caption><b><h4>ENSAYOS DE LA BANDA DE MUSICA</h4></b></caption>
+            <thead>
+              <tr>
+                <th>ACTIVIDADES</th>
+                <th>DIAS DE ENSAYO</th>
+                <th>ASISTENCIAS</th>
+                <th>PUNTAJE DE ENSAYO</th>
+                <th>ESTADO/OBSERVACIÓN</th>
+              </tr>
+            </thead>
+            <tbody id="grades-table">
+            <!-- Las filas se insertan desde calificacion.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Scripts -->
+      <script src="banda.js"></script>
+      </html>

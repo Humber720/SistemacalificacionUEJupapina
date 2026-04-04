@@ -1,0 +1,179 @@
+/* ============================= */
+/* CONTENEDOR GENERAL */
+.seccion {
+  max-width: 1100px;
+  margin: 25px auto;
+  padding: 20px;
+}
+
+/* TÍTULOS */
+.seccion h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+/* ============================= */
+/* CONTENIDO INTERACTIVO */
+.contenido-interactivo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* TARJETAS DE ACTIVIDAD */
+.curso-contenido {
+  display: none; /* importante para JS */
+  background: linear-gradient(135deg, #ffffff, #f0f8ff);
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* EFECTO HOVER */
+.curso-contenido:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* EFECTO BRILLO */
+.curso-contenido::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+  transition: 0.5s;
+}
+
+.curso-contenido:hover::before {
+  left: 100%;
+}
+
+/* TITULO ACTIVIDAD */
+.curso-contenido h3 {
+  color: #2980b9;
+  margin-bottom: 8px;
+}
+
+/* TEXTO */
+.curso-contenido p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* IFRAME */
+.curso-contenido iframe {
+  border-radius: 10px;
+  border: none;
+  width: 100%;
+  height: 300px;
+}
+
+/* ============================= */
+/* FORMULARIO DRIVE */
+.formulario-drive {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  border-radius: 15px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.formulario-drive h3 {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+/* IFRAME FORM */
+.formulario-drive iframe {
+  border-radius: 12px;
+  border: none;
+  width: 100%;
+  height: 450px;
+  background: #fff;
+}
+
+/* ============================= */
+/* AUTOEVALUACIÓN */
+#autoevaluacion {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f4f8fb;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+#autoevaluacion h2 {
+  color: #27ae60;
+}
+
+/* TEXTO */
+#autoevaluacion p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* IFRAME */
+.iframe-container iframe {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  .seccion h2 {
+    font-size: 22px;
+  }
+
+  .curso-contenido iframe {
+    height: 250px;
+  }
+
+  .formulario-drive iframe {
+    height: 400px;
+  }
+
+  .iframe-container iframe {
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .seccion {
+    padding: 10px;
+  }
+
+  .curso-contenido {
+    padding: 10px;
+  }
+
+  .curso-contenido iframe {
+    height: 200px;
+  }
+
+  .formulario-drive iframe {
+    height: 350px;
+  }
+
+  .iframe-container iframe {
+    height: 350px;
+  }
+}
