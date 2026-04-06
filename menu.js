@@ -7,63 +7,58 @@ const estudiantes = {
 };
 
 // ===============================
-// INICIALIZAR EVENTOS
+// INICIALIZAR TODO
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ===============================
-    // 🔒 PROTEGER ACCESO (SOLO PÁGINAS INTERNAS)
-    // ===============================
     const data = localStorage.getItem("estudiante");
-    const paginaActual = window.location.pathname;
+    const pagina = window.location.pathname.split("/").pop();
 
-    // Si NO hay sesión y NO estás en login → redirige
-    if (!data && !paginaActual.includes("index.html")) {
-        window.location.replace("index.html");
+    // ===============================
+    // 🔓 LOGIN (index.html)
+    // ===============================
+    if (pagina === "index.html" || pagina === "") {
+
+        if (data) {
+            location.replace("menu.html"); // 🔥 evita volver atrás
+        }
+
+        const form = document.getElementById("loginForm");
+        if (form) {
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                login();
+            });
+        }
+
+        return; // 🔥 IMPORTANTE
+    }
+
+    // ===============================
+    // 🔒 PROTEGER PÁGINAS
+    // ===============================
+    if (!data) {
+        location.replace("index.html");
         return;
     }
 
-    // Si YA hay sesión y está en login → enviar a menú
-    if (data && paginaActual.includes("index.html")) {
-        window.location.replace("menu.html");
-        return;
-    }
+    // ===============================
+    // 🚫 BLOQUEAR BOTÓN ATRÁS (CELULAR)
+    // ===============================
+    history.pushState(null, null, location.href);
+
+    window.onpopstate = function () {
+        location.replace("index.html");
+    };
 
     // ===============================
-    // 🚫 BLOQUEAR BOTÓN ATRÁS
+    // MOSTRAR DATOS
     // ===============================
-    if (data) {
-        window.history.pushState(null, null, window.location.href);
-        window.onpopstate = function () {
-            window.location.replace("index.html");
-        };
-    }
+    mostrarPerfilHeader();
 
     // ===============================
-    // RESTO DE TU CÓDIGO (NO TOCAR)
-    // ===============================
-
-    // LOGIN FORM
-    const form = document.getElementById("loginForm");
-    if (form) {
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            login();
-        });
-    }
-
-    // AUTOLOGIN (si ya inició sesión y está en index.html)
-    const data = localStorage.getItem("estudiante");
-    if (data && window.location.pathname.includes("index.html")) {
-        window.location.href = "menu.html";
-    }
-
-    // MOSTRAR DATOS SI HAY SESIÓN
-    if (data) {
-        mostrarPerfilHeader();
-    }
-
     // DROPDOWN PERFIL
+    // ===============================
     const toggle = document.getElementById("dropdownToggle");
     if (toggle) {
         toggle.addEventListener("click", () => {
@@ -71,7 +66,72 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ===============================
+    // PUBLICIDAD
+    // ===============================
+    const slides = document.querySelectorAll(".publicidad img");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+
+    if (slides.length > 0) {
+        let index = 0;
+        let interval = setInterval(showNext, 4000);
+
+        function showSlide(n) {
+            slides.forEach((img, i) => {
+                img.classList.remove("active");
+                if (i === n) img.classList.add("active");
+            });
+        }
+
+        function showNext() {
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        }
+
+        function showPrev() {
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener("click", () => {
+                showNext();
+                resetTimer();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener("click", () => {
+                showPrev();
+                resetTimer();
+            });
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            interval = setInterval(showNext, 4000);
+        }
+    }
+
+    // ===============================
+    // RESALTAR MENÚ ACTIVO
+    // ===============================
+    const links = document.querySelectorAll("#menuScroll a");
+    const currentPage = window.location.pathname.split("/").pop();
+
+    links.forEach(link => {
+        const linkPage = link.getAttribute("href");
+
+        if (linkPage === currentPage) {
+            link.classList.add("activo");
+        } else {
+            link.classList.remove("activo");
+        }
+    });
+
 });
+
 
 // ===============================
 // LOGIN
@@ -89,7 +149,6 @@ function login() {
     const estudiante = estudiantes[username];
     if (!estudiante) return mostrarMensaje("CI no registrado", "red");
 
-    // GUARDAR DATOS EN LOCALSTORAGE
     const datos = {
         ci: username,
         nombre: estudiante.nombre,
@@ -97,26 +156,29 @@ function login() {
         nombreCompleto: estudiante.nombre + " " + estudiante.apellido,
         curso: estudiante.curso
     };
+
     localStorage.setItem("estudiante", JSON.stringify(datos));
 
     mostrarMensaje("Ingreso correcto...", "green");
 
-    setTimeout(() => window.location.href = "menu.html", 800);
+    // 🔥 IMPORTANTE (ANTI ATRÁS)
+    setTimeout(() => location.replace("menu.html"), 800);
 }
 
+
 // ===============================
-// MOSTRAR PERFIL EN HEADER Y DROPDOWN
+// PERFIL
 // ===============================
 function mostrarPerfilHeader() {
     const data = JSON.parse(localStorage.getItem("estudiante"));
+
     if (!data) {
-        if (!window.location.pathname.includes("index.html")) window.location.href = "index.html";
+        location.replace("index.html");
         return;
     }
 
     const nombreCompleto = data.nombre + " " + data.apellido;
 
-    // PERFIL HEADER
     const studentName = document.getElementById("student-name");
     if (studentName) studentName.textContent = data.nombre;
 
@@ -126,20 +188,19 @@ function mostrarPerfilHeader() {
     const cursoHeader = document.getElementById("course-name");
     if (cursoHeader) cursoHeader.textContent = data.curso;
 
-    // BIENVENIDA O CONTENIDO CENTRAL
     const nombrePrincipal = document.getElementById("nombrePrincipal");
-    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto; //Estudiante luego viene el nombre.
+    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto;
 
     const cursoPrincipal = document.getElementById("cursoPrincipal");
     if (cursoPrincipal) cursoPrincipal.textContent = data.curso;
 
-    // EN CALIFICACION O OTRAS PÁGINAS CON OTROS ELEMENTOS
     const studentNameMain = document.getElementById("student-name-main");
     if (studentNameMain) studentNameMain.textContent = nombreCompleto;
 
     const courseNameMain = document.getElementById("course-name-main");
     if (courseNameMain) courseNameMain.textContent = data.curso;
 }
+
 
 // ===============================
 // MENSAJES
@@ -151,10 +212,12 @@ function mostrarMensaje(texto, color) {
         mensaje.style.color = color;
     }
 }
+
 function limpiarMensaje() {
     const mensaje = document.getElementById("mensaje");
     if (mensaje) mensaje.textContent = "";
 }
+
 
 // ===============================
 // LIMPIAR INPUTS
@@ -164,13 +227,17 @@ function limpiarInputs() {
     if (password) password.value = "";
 }
 
+
 // ===============================
 // CERRAR SESIÓN
 // ===============================
 function cerrarSesion() {
     localStorage.removeItem("estudiante");
-    window.location.href = "index.html";
+
+    // 🔥 evita volver atrás
+    location.replace("index.html");
 }
+
 
 // ===============================
 // MOSTRAR / OCULTAR CONTRASEÑA
@@ -190,6 +257,8 @@ function togglePasswordVisibility() {
         eyeClose.style.display = "none";
     }
 }
+
+
 // ===============================
 // SCROLL MENÚ
 // ===============================
@@ -197,75 +266,3 @@ function scrollMenu(valor) {
     const menu = document.getElementById("menuScroll");
     if (menu) menu.scrollLeft += valor;
 }
-
-//PARA PIBLICIDAD DE IMAGENES
-document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll(".publicidad img");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
-  
-    let index = 0;
-    let interval = setInterval(showNext, 4000); // cambio automático cada 4s
-  
-    function showSlide(n) {
-      slides.forEach((img, i) => {
-        img.classList.remove("active");
-        if (i === n) img.classList.add("active");
-      });
-    }
-  
-    function showNext() {
-      index = (index + 1) % slides.length;
-      showSlide(index);
-    }
-  
-    function showPrev() {
-      index = (index - 1 + slides.length) % slides.length;
-      showSlide(index);
-    }
-  
-    nextBtn.addEventListener("click", () => {
-      showNext();
-      resetTimer();
-    });
-  
-    prevBtn.addEventListener("click", () => {
-      showPrev();
-      resetTimer();
-    });
-  
-    function resetTimer() {
-      clearInterval(interval);
-      interval = setInterval(showNext, 4000);
-    }
-});
-// ===============================
-// PARA RESALTAR CABECERA AUTOMATIC
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll("#menuScroll a");
-
-    // Obtener la página actual
-    const currentPage = window.location.pathname.split("/").pop();
-
-    links.forEach(link => {
-        const linkPage = link.getAttribute("href");
-
-        if (linkPage === currentPage) {
-            link.classList.add("activo");
-        } else {
-            link.classList.remove("activo");
-        }
-    });
-});
-
-
-
-
-
-
-
-
-
-
-
