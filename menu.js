@@ -11,6 +11,38 @@ const estudiantes = {
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
 
+    // ===============================
+    // 🔒 PROTEGER ACCESO (SOLO PÁGINAS INTERNAS)
+    // ===============================
+    const data = localStorage.getItem("estudiante");
+    const paginaActual = window.location.pathname;
+
+    // Si NO hay sesión y NO estás en login → redirige
+    if (!data && !paginaActual.includes("index.html")) {
+        window.location.replace("index.html");
+        return;
+    }
+
+    // Si YA hay sesión y está en login → enviar a menú
+    if (data && paginaActual.includes("index.html")) {
+        window.location.replace("menu.html");
+        return;
+    }
+
+    // ===============================
+    // 🚫 BLOQUEAR BOTÓN ATRÁS
+    // ===============================
+    if (data) {
+        window.history.pushState(null, null, window.location.href);
+        window.onpopstate = function () {
+            window.location.replace("index.html");
+        };
+    }
+
+    // ===============================
+    // RESTO DE TU CÓDIGO (NO TOCAR)
+    // ===============================
+
     // LOGIN FORM
     const form = document.getElementById("loginForm");
     if (form) {
@@ -227,14 +259,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Función para cerrar sesión location.replace()	El historial no permite volver a plataforma
-function logout() {
-    // Elimina la sesión
-    localStorage.removeItem("loggedUser");
-
-    // Redirige reemplazando la historia (impide volver con "Atrás")
-    location.replace("index.html");
-}
 
 
 
