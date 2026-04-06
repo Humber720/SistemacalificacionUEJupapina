@@ -96,7 +96,7 @@ function mostrarPerfilHeader() {
 
     // BIENVENIDA O CONTENIDO CENTRAL
     const nombrePrincipal = document.getElementById("nombrePrincipal");
-    if (nombrePrincipal) nombrePrincipal.textContent = "Bienvenido/a, " + nombreCompleto;
+    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto; //Estudiante luego viene el nombre.
 
     const cursoPrincipal = document.getElementById("cursoPrincipal");
     if (cursoPrincipal) cursoPrincipal.textContent = data.curso;
