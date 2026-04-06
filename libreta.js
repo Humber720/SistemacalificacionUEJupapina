@@ -148,11 +148,4 @@ function descargarLibreta() {
     link.click();
 }
 
-// Función para cerrar sesión location.replace()	El historial no permite volver a plataforma
-function logout() {
-    // Elimina la sesión
-    localStorage.removeItem("loggedUser");
 
-    // Redirige reemplazando la historia (impide volver con "Atrás")
-    location.replace("index.html");
-}
