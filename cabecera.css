@@ -342,22 +342,23 @@ body {
     display: none;
   }
 }
-/* 📱 CELULAR HORIZONTAL - ARREGLAR PERFIL */
+/* 📱 CELULAR HORIZONTAL - PERFIL SIN ROMPER DROPDOWN */
 @media (max-width: 900px) and (orientation: landscape) {
 
-  /* 🔥 Evita que el contenedor se rompa */
-  .encabezado-container {
-    overflow: hidden;
+  /* 🔥 CONTENEDOR PERFIL CONTROLADO */
+  .perfil-wrapper {
+    max-width: 120px;
+    position: relative;
   }
 
-  /* 🔥 BOTÓN PERFIL MÁS COMPACTO */
+  /* 🔥 BOTÓN AJUSTADO */
   .encabezado-perfil-btn {
-    max-width: 120px;
+    max-width: 100%;
     padding: 4px 6px;
     gap: 5px;
   }
 
-  /* 🔥 NOMBRE RECORTADO (CLAVE) */
+  /* 🔥 NOMBRE RECORTADO */
   .encabezado-nombre {
     max-width: 70px;
     overflow: hidden;
@@ -367,10 +368,10 @@ body {
     font-size: 12px;
   }
 
-  /* 🔥 ICONO MÁS PEQUEÑO */
-  .avatar-circle {
-    padding: 4px 6px;
-    font-size: 12px;
+  /* 🔥 MUY IMPORTANTE: asegurar que el dropdown se vea */
+  .menu-dropdown {
+    right: 0;
+    top: 45px;
+    z-index: 999;
   }
-
 }
