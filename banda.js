@@ -93,32 +93,54 @@ function cargarEnsayos(estudiante) {
 
     ensayos.forEach(e => {
         const fila = document.createElement("tr");
-        fila.innerHTML = `
-            <td>${e.actividad}</td>
-            <td>${e.dia}</td>
-            <td>${e.asistencia}</td>
-            <td>${e.puntaje}</td>
-            <td>${e.observacion || ""}</td>
-        `;
+
+        // 🎯 COLOR SEGÚN NOTA
+        if (e.puntaje < 51) {
+            fila.classList.add("reprobado");
+        } else {
+            fila.classList.add("aprobado");
+        }
+
+fila.innerHTML = `
+    <td>${e.actividad}</td>
+    <td>${e.dia}</td>
+    <td>${e.asistencia}</td>
+    <td><span class="puntaje">${e.puntaje}</span></td>
+    <td>${e.observacion || ""}</td>
+`;
+
         tbody.appendChild(fila);
 
         total += e.puntaje;
         count++;
     });
 
-    // Promedio
+    // ===============================
+    // PROMEDIO FINAL
+    // ===============================
     const promedio = count > 0 ? Math.round(total / count) : 0;
     const estadoFinal = promedio >= 51 ? "APROBADO(A)" : "REPROBADO(A)";
 
-    // Fila de promedio
     const filaPromedio = document.createElement("tr");
+
+    // 🎯 CLASE PARA NÚMERO Y ESTADO
+    let clasePromedio = "";
+
+    if (promedio < 51) {
+        clasePromedio = "nota-baja";
+    } else {
+        clasePromedio = "nota-alta";
+    }
+
+    // ✅ FILA COMPLETA
     filaPromedio.innerHTML = `
         <td><b>PROMEDIO</b></td>
         <td></td>
         <td></td>
-        <td><b>${promedio}</b></td>
-        <td><b>${estadoFinal}</b></td>
+        <td><b class="${clasePromedio}">${promedio}</b></td>
+        <td><b class="${clasePromedio}">${estadoFinal}</b></td>
     `;
+
     tbody.appendChild(filaPromedio);
 }
 
