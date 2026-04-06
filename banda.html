@@ -69,20 +69,21 @@
     </div>
   </header>
  
-    <!-- Contenido principal entrevista -->
-    <div class="container">
+      <!-- Contenido principal entrevista -->
+      <div class="container">
         <!--  nombre del estudiante y curso -->
-<div class="student-info">
-  <h2>ESTUDIANTE: <span id="student-name-main"></span></h2>
-  <div class="student-details">
-    <div class="curso"><strong>Curso:</strong> <span id="course-name-main"></span></div>
-    <div class="instrumento"><strong>Instrumento musical:</strong> <span id="instrument-name"></span></div>
-    <div class="codigo"><strong>Código:</strong> <span id="codigo-name"></span></div>
-  </div>
-</div>
+        <div class="student-info">
+          <h2>ESTUDIANTE: <span id="student-name-main"></span></h2>
+          <div class="student-details">
+            <div class="curso"><strong>Curso:</strong> <span id="course-name-main"></span></div>
+            <div class="instrumento"><strong>Instrumento musical:</strong> <span id="instrument-name"></span></div>
+            <div class="codigo"><strong>Código:</strong> <span id="codigo-name"></span></div>
+          </div>
+        </div>
         <!-- Tabla de calificaciones -->
-        <table class="grades-table">
-          <caption><b><h4>ENSAYOS DE LA BANDA DE MUSICA</h4></b></caption>
+        <div class="table-wrapper">
+          <table class="grades-table">
+            <caption>ENSAYOS DE LA BANDA DE MUSICA</caption>
             <thead>
               <tr>
                 <th>ACTIVIDADES</th>
@@ -92,12 +93,11 @@
                 <th>ESTADO/OBSERVACIÓN</th>
               </tr>
             </thead>
-            <tbody id="grades-table">
-            <!-- Las filas se insertan desde calificacion.js -->
-          </tbody>
-        </table>
+            <tbody id="grades-table"></tbody>
+          </table>
+        </div>
       </div>
-
+      
       <!-- Scripts -->
       <script src="banda.js"></script>
       </html>
