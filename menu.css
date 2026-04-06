@@ -24,7 +24,7 @@
     background: linear-gradient(145deg, #b2ebf2, #80deea);
 }
 
-.bienvenida h1 {
+.bienvenida h2 {
     color: #2563eb;
     margin: 10px 0;
     transition: color 0.3s;
