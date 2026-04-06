@@ -144,3 +144,15 @@ function toggleMenu() {
         window.location.href = "lateral.html";
     }
 }
+
+// 🔒 PROTEGER ACCESO
+const estudiante = localStorage.getItem("estudiante");
+
+if (!estudiante) {
+    window.location.href = "index.html";
+}
+window.addEventListener("pageshow", function (event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+});
