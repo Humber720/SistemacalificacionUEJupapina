@@ -145,3 +145,37 @@
     font-size: 18px;
   }
 }
+/* FILAS NORMALES */
+.grades-table tr:nth-child(odd) td {
+  background: #ffffff;
+}
+
+.grades-table tr:nth-child(even) td {
+  background: #f0f0f0;
+}
+
+/* 🔴 SOLO EL NÚMERO REPROBADO */
+.reprobado td:nth-child(4) .puntaje {
+  color: #e60000;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* 🟢 SOLO EL NÚMERO APROBADO */
+.aprobado td:nth-child(4) .puntaje {
+  color: #0a8f2a;
+  font-weight: bold;
+  font-size: 16px;
+}
+/* 🟢 TEXTO APROBADO */
+.nota-alta {
+  color: #16a34a; /* verde */
+  font-weight: bold;
+}
+/* 🔴 TEXTO REPROBADO */
+.nota-baja {
+  color: #dc2626; /* rojo */
+  font-weight: bold;
+}
+
+
