@@ -233,11 +233,14 @@ const estudiante = localStorage.getItem("estudiante");
 if (!estudiante) {
     window.location.href = "index.html";
 }
-window.addEventListener("pageshow", function (event) {
-    if (event.persisted) {
-        window.location.reload();
-    }
-});
+// Función para cerrar sesión location.replace()	El historial no permite volver a plataforma
+function logout() {
+    // Elimina la sesión
+    localStorage.removeItem("loggedUser");
+
+    // Redirige reemplazando la historia (impide volver con "Atrás")
+    location.replace("index.html");
+}
 
 
 
