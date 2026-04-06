@@ -342,3 +342,35 @@ body {
     display: none;
   }
 }
+/* 📱 CELULAR HORIZONTAL - ARREGLAR PERFIL */
+@media (max-width: 900px) and (orientation: landscape) {
+
+  /* 🔥 Evita que el contenedor se rompa */
+  .encabezado-container {
+    overflow: hidden;
+  }
+
+  /* 🔥 BOTÓN PERFIL MÁS COMPACTO */
+  .encabezado-perfil-btn {
+    max-width: 120px;
+    padding: 4px 6px;
+    gap: 5px;
+  }
+
+  /* 🔥 NOMBRE RECORTADO (CLAVE) */
+  .encabezado-nombre {
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    font-size: 12px;
+  }
+
+  /* 🔥 ICONO MÁS PEQUEÑO */
+  .avatar-circle {
+    padding: 4px 6px;
+    font-size: 12px;
+  }
+
+}
