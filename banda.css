@@ -118,3 +118,30 @@
     flex: 1; /* comparten el espacio */
   }
 }
+/* CONTENEDOR SCROLL */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 15px;
+}
+
+/* TABLA */
+.grades-table {
+  min-width: 700px; /* 🔥 clave */
+}
+@media screen and (max-width: 480px) {
+
+  .grades-table {
+    min-width: 650px;
+  }
+
+  .grades-table th,
+  .grades-table td {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .student-info h2 {
+    font-size: 18px;
+  }
+}
