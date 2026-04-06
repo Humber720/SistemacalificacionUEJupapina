@@ -77,12 +77,6 @@ function toggleMenu() {
     }
 }
 
-// 🔒 PROTEGER ACCESO
-const estudiante = localStorage.getItem("estudiante");
-
-if (!estudiante) {
-    window.location.href = "index.html";
-}
 // Función para cerrar sesión location.replace()	El historial no permite volver a plataforma
 function logout() {
     // Elimina la sesión
