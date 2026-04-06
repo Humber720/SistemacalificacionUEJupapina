@@ -187,40 +187,20 @@
     height: 300px;
   }
 }
-
-/* ================= RESPONSIVE PARA CELULAR ================= */
-@media (max-width: 768px) {
-    .container {
-        padding: 20px 15px;
-    }
-
-    .grades-table th, .grades-table td {
-        padding: 10px 5px;
-        font-size: 14px;
-    }
-
-    .container button {
-        font-size: 14px;
-        padding: 10px 14px;
-    }
-
-    .student-info h2 {
-        font-size: 20px;
-    }
+/* CONTENEDOR SCROLL */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
 }
 
-@media (max-width: 480px) {
-    .grades-table th, .grades-table td {
-        padding: 8px 4px;
-        font-size: 13px;
-    }
-
-    .container button {
-        font-size: 13px;
-        padding: 6px 12px;
-    }
-
-    .student-info h2 {
-        font-size: 18px;
-    }
+/* TABLA */
+.grades-table {
+  min-width: 600px; /* evita que se rompa */
 }
+
+/* TEXTO */
+.grades-table th,
+.grades-table td {
+  white-space: nowrap;
+}
+
