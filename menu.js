@@ -1,4 +1,29 @@
 // ===============================
+// VERIFICAR SESIÓN AL CARGAR PÁGINA (Previene volver atrás)
+// ===============================
+(function() {
+    function verificarSesion() {
+        const estudiante = localStorage.getItem("estudiante");
+        const currentPage = window.location.pathname.split("/").pop();
+
+        // Si no hay sesión y no estamos en index.html, redirige al login
+        if (!estudiante && currentPage !== "index.html") {
+            window.location.href = "index.html";
+        }
+    }
+
+    // Ejecutar inmediatamente al cargar
+    verificarSesion();
+
+    // Ejecutar también cuando la página se vuelve visible (botón atrás en móviles)
+    document.addEventListener("visibilitychange", function() {
+        if (document.visibilityState === "visible") {
+            verificarSesion();
+        }
+    });
+})();
+
+// ===============================
 // BASE DE DATOS DE ESTUDIANTES
 // ===============================
 const estudiantes = {
@@ -96,7 +121,7 @@ function mostrarPerfilHeader() {
 
     // BIENVENIDA O CONTENIDO CENTRAL
     const nombrePrincipal = document.getElementById("nombrePrincipal");
-    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto; //Estudiante luego viene el nombre.
+    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto;
 
     const cursoPrincipal = document.getElementById("cursoPrincipal");
     if (cursoPrincipal) cursoPrincipal.textContent = data.curso;
@@ -158,6 +183,7 @@ function togglePasswordVisibility() {
         eyeClose.style.display = "none";
     }
 }
+
 // ===============================
 // SCROLL MENÚ
 // ===============================
@@ -166,59 +192,59 @@ function scrollMenu(valor) {
     if (menu) menu.scrollLeft += valor;
 }
 
-//PARA PIBLICIDAD DE IMAGENES
+// ===============================
+// CARRUSEL PUBLICIDAD
+// ===============================
 document.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelectorAll(".publicidad img");
     const prevBtn = document.querySelector(".prev");
     const nextBtn = document.querySelector(".next");
-  
+
     let index = 0;
-    let interval = setInterval(showNext, 4000); // cambio automático cada 4s
-  
+    let interval = setInterval(showNext, 4000);
+
     function showSlide(n) {
-      slides.forEach((img, i) => {
-        img.classList.remove("active");
-        if (i === n) img.classList.add("active");
-      });
+        slides.forEach((img, i) => {
+            img.classList.remove("active");
+            if (i === n) img.classList.add("active");
+        });
     }
-  
+
     function showNext() {
-      index = (index + 1) % slides.length;
-      showSlide(index);
+        index = (index + 1) % slides.length;
+        showSlide(index);
     }
-  
+
     function showPrev() {
-      index = (index - 1 + slides.length) % slides.length;
-      showSlide(index);
+        index = (index - 1 + slides.length) % slides.length;
+        showSlide(index);
     }
-  
+
     nextBtn.addEventListener("click", () => {
-      showNext();
-      resetTimer();
+        showNext();
+        resetTimer();
     });
-  
+
     prevBtn.addEventListener("click", () => {
-      showPrev();
-      resetTimer();
+        showPrev();
+        resetTimer();
     });
-  
+
     function resetTimer() {
-      clearInterval(interval);
-      interval = setInterval(showNext, 4000);
+        clearInterval(interval);
+        interval = setInterval(showNext, 4000);
     }
 });
+
 // ===============================
-// PARA RESALTAR CABECERA AUTOMATIC
+// RESALTAR PÁGINA ACTIVA EN MENU
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelectorAll("#menuScroll a");
-
-    // Obtener la página actual
     const currentPage = window.location.pathname.split("/").pop();
 
     links.forEach(link => {
         const linkPage = link.getAttribute("href");
-
         if (linkPage === currentPage) {
             link.classList.add("activo");
         } else {
@@ -226,15 +252,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
