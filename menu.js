@@ -7,9 +7,49 @@ const estudiantes = {
 };
 
 // ===============================
+// 🔒 CONTROL GLOBAL DE SESIÓN (ANTI-ATRÁS)
+// ===============================
+(function () {
+
+    const pagina = window.location.pathname.split("/").pop();
+    const sesion = localStorage.getItem("estudiante");
+
+    // 🔓 SI ESTÁ EN LOGIN
+    if (pagina === "index.html" || pagina === "") {
+        if (sesion) {
+            location.replace("menu.html"); // 🔥 NO permite volver
+        }
+        return;
+    }
+
+    // 🔒 SI NO HAY SESIÓN → BLOQUEAR
+    if (!sesion) {
+        location.replace("index.html");
+        return;
+    }
+
+    // 🚫 BLOQUEAR BOTÓN ATRÁS
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        location.replace("index.html");
+    };
+
+    // 🔥 EVITAR CACHE (CLAVE EN CELULAR)
+    window.addEventListener("pageshow", function (event) {
+        if (event.persisted) {
+            location.reload();
+        }
+    });
+
+})();
+
+
+// ===============================
 // INICIALIZAR EVENTOS
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
+
+    const data = localStorage.getItem("estudiante");
 
     // LOGIN FORM
     const form = document.getElementById("loginForm");
@@ -18,12 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             login();
         });
-    }
-
-    // AUTOLOGIN (si ya inició sesión y está en index.html)
-    const data = localStorage.getItem("estudiante");
-    if (data && window.location.pathname.includes("index.html")) {
-        window.location.href = "menu.html";
     }
 
     // MOSTRAR DATOS SI HAY SESIÓN
@@ -41,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
 // ===============================
 // LOGIN
 // ===============================
@@ -57,7 +92,6 @@ function login() {
     const estudiante = estudiantes[username];
     if (!estudiante) return mostrarMensaje("CI no registrado", "red");
 
-    // GUARDAR DATOS EN LOCALSTORAGE
     const datos = {
         ci: username,
         nombre: estudiante.nombre,
@@ -65,26 +99,27 @@ function login() {
         nombreCompleto: estudiante.nombre + " " + estudiante.apellido,
         curso: estudiante.curso
     };
+
     localStorage.setItem("estudiante", JSON.stringify(datos));
 
     mostrarMensaje("Ingreso correcto...", "green");
 
-    setTimeout(() => window.location.href = "menu.html", 800);
+    setTimeout(() => location.replace("menu.html"), 800); // 🔥 CLAVE
 }
 
+
 // ===============================
-// MOSTRAR PERFIL EN HEADER Y DROPDOWN
+// MOSTRAR PERFIL
 // ===============================
 function mostrarPerfilHeader() {
     const data = JSON.parse(localStorage.getItem("estudiante"));
     if (!data) {
-        if (!window.location.pathname.includes("index.html")) window.location.href = "index.html";
+        location.replace("index.html");
         return;
     }
 
     const nombreCompleto = data.nombre + " " + data.apellido;
 
-    // PERFIL HEADER
     const studentName = document.getElementById("student-name");
     if (studentName) studentName.textContent = data.nombre;
 
@@ -94,20 +129,19 @@ function mostrarPerfilHeader() {
     const cursoHeader = document.getElementById("course-name");
     if (cursoHeader) cursoHeader.textContent = data.curso;
 
-    // BIENVENIDA O CONTENIDO CENTRAL
     const nombrePrincipal = document.getElementById("nombrePrincipal");
-    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto; //Estudiante luego viene el nombre.
+    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto;
 
     const cursoPrincipal = document.getElementById("cursoPrincipal");
     if (cursoPrincipal) cursoPrincipal.textContent = data.curso;
 
-    // EN CALIFICACION O OTRAS PÁGINAS CON OTROS ELEMENTOS
     const studentNameMain = document.getElementById("student-name-main");
     if (studentNameMain) studentNameMain.textContent = nombreCompleto;
 
     const courseNameMain = document.getElementById("course-name-main");
     if (courseNameMain) courseNameMain.textContent = data.curso;
 }
+
 
 // ===============================
 // MENSAJES
@@ -119,29 +153,24 @@ function mostrarMensaje(texto, color) {
         mensaje.style.color = color;
     }
 }
+
 function limpiarMensaje() {
     const mensaje = document.getElementById("mensaje");
     if (mensaje) mensaje.textContent = "";
 }
 
-// ===============================
-// LIMPIAR INPUTS
-// ===============================
-function limpiarInputs() {
-    const password = document.getElementById("password");
-    if (password) password.value = "";
-}
 
 // ===============================
-// CERRAR SESIÓN
+// CERRAR SESIÓN (MEJORADO)
 // ===============================
 function cerrarSesion() {
     localStorage.removeItem("estudiante");
-    window.location.href = "index.html";
+    location.replace("index.html"); // 🔥 evita volver
 }
 
+
 // ===============================
-// MOSTRAR / OCULTAR CONTRASEÑA
+// MOSTRAR / OCULTAR PASSWORD
 // ===============================
 function togglePasswordVisibility() {
     const input = document.getElementById("password");
@@ -158,6 +187,8 @@ function togglePasswordVisibility() {
         eyeClose.style.display = "none";
     }
 }
+
+
 // ===============================
 // SCROLL MENÚ
 // ===============================
@@ -166,59 +197,63 @@ function scrollMenu(valor) {
     if (menu) menu.scrollLeft += valor;
 }
 
-//PARA PIBLICIDAD DE IMAGENES
+
+// ===============================
+// PUBLICIDAD
+// ===============================
 document.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelectorAll(".publicidad img");
     const prevBtn = document.querySelector(".prev");
     const nextBtn = document.querySelector(".next");
-  
+
+    if (!slides.length) return;
+
     let index = 0;
-    let interval = setInterval(showNext, 4000); // cambio automático cada 4s
-  
+    let interval = setInterval(showNext, 4000);
+
     function showSlide(n) {
-      slides.forEach((img, i) => {
-        img.classList.remove("active");
-        if (i === n) img.classList.add("active");
-      });
+        slides.forEach((img, i) => {
+            img.classList.remove("active");
+            if (i === n) img.classList.add("active");
+        });
     }
-  
+
     function showNext() {
-      index = (index + 1) % slides.length;
-      showSlide(index);
+        index = (index + 1) % slides.length;
+        showSlide(index);
     }
-  
+
     function showPrev() {
-      index = (index - 1 + slides.length) % slides.length;
-      showSlide(index);
+        index = (index - 1 + slides.length) % slides.length;
+        showSlide(index);
     }
-  
-    nextBtn.addEventListener("click", () => {
-      showNext();
-      resetTimer();
+
+    nextBtn?.addEventListener("click", () => {
+        showNext();
+        resetTimer();
     });
-  
-    prevBtn.addEventListener("click", () => {
-      showPrev();
-      resetTimer();
+
+    prevBtn?.addEventListener("click", () => {
+        showPrev();
+        resetTimer();
     });
-  
+
     function resetTimer() {
-      clearInterval(interval);
-      interval = setInterval(showNext, 4000);
+        clearInterval(interval);
+        interval = setInterval(showNext, 4000);
     }
 });
+
+
 // ===============================
-// PARA RESALTAR CABECERA AUTOMATIC
+// MENÚ ACTIVO
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelectorAll("#menuScroll a");
-
-    // Obtener la página actual
     const currentPage = window.location.pathname.split("/").pop();
 
     links.forEach(link => {
         const linkPage = link.getAttribute("href");
-
         if (linkPage === currentPage) {
             link.classList.add("activo");
         } else {
@@ -226,48 +261,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-// ===============================
-// 🔒 BLOQUEO PROFESIONAL BOTÓN ATRÁS (CELULAR)
-// ===============================
-(function () {
-
-    const pagina = window.location.pathname.split("/").pop();
-    const data = localStorage.getItem("estudiante");
-
-    // ❌ NO aplicar en login
-    if (pagina === "index.html" || pagina === "") return;
-
-    // 🔒 SI NO HAY SESIÓN → FUERA
-    if (!data) {
-        location.replace("index.html");
-        return;
-    }
-
-    // 🚫 BLOQUEAR ATRÁS
-    history.pushState(null, null, location.href);
-
-    window.addEventListener("popstate", function () {
-        location.replace("index.html");
-    });
-
-    // 🔥 EVITAR CACHE (CLAVE EN CELULAR)
-    window.addEventListener("pageshow", function (event) {
-        if (event.persisted) {
-            location.replace("index.html");
-        }
-    });
-
-})();
-
-
-
-
-
-
-
-
-
-
-
-
