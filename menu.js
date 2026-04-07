@@ -10,38 +10,17 @@ const estudiantes = {
 // INICIALIZAR EVENTOS
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-    const sesion = localStorage.getItem("estudiante");
-    const pagina = window.location.pathname.split("/").pop();
-
-    // 🔒 PROTECCIÓN DE ACCESO (ANTI-ATRÁS)
-    if (!sesion && pagina !== "index.html") {
-        window.location.replace("index.html");
-    }
-    if (sesion && pagina === "index.html") {
-        window.location.replace("menu.html");
-    }
-
-    // BLOQUEAR BOTÓN ATRÁS
-    window.history.pushState(null, null, window.location.href);
-    window.addEventListener("popstate", () => {
-        window.history.pushState(null, null, window.location.href);
-    });
-
-    // EVITAR CACHE DEL NAVEGADOR (CELULAR)
-    window.addEventListener("pageshow", event => {
-        if (event.persisted) window.location.reload();
-    });
 
     // LOGIN FORM
     const form = document.getElementById("loginForm");
     if (form) {
-        form.addEventListener("submit", e => {
+        form.addEventListener("submit", (e) => {
             e.preventDefault();
             login();
         });
     }
 
-    // AUTOLOGIN si ya inició sesión y está en index.html
+    // AUTOLOGIN (si ya inició sesión y está en index.html)
     const data = localStorage.getItem("estudiante");
     if (data && window.location.pathname.includes("index.html")) {
         window.location.href = "menu.html";
@@ -60,25 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ===============================
-    // MANTENER LATERAL ABIERTO SI YA SE ABRIÓ
-    const paginaGuardada = localStorage.getItem('paginaActual');
-    const sidebar = document.querySelector('.sidebar');
-    if (sidebar && paginaGuardada === pagina) {
-        sidebar.classList.add('activo');
-    }
-
-    // ===============================
-    // RESALTAR MENÚ SCROLL ACTIVO
-    const links = document.querySelectorAll("#menuScroll a");
-    links.forEach(link => {
-        const linkPage = link.getAttribute("href");
-        if (linkPage === pagina) {
-            link.classList.add("activo");
-        } else {
-            link.classList.remove("activo");
-        }
-    });
 });
 
 // ===============================
@@ -87,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function login() {
     const username = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
+
     limpiarMensaje();
 
     if (!username || !password) return mostrarMensaje("Complete todos los campos", "red");
@@ -96,6 +57,7 @@ function login() {
     const estudiante = estudiantes[username];
     if (!estudiante) return mostrarMensaje("CI no registrado", "red");
 
+    // GUARDAR DATOS EN LOCALSTORAGE
     const datos = {
         ci: username,
         nombre: estudiante.nombre,
@@ -132,13 +94,14 @@ function mostrarPerfilHeader() {
     const cursoHeader = document.getElementById("course-name");
     if (cursoHeader) cursoHeader.textContent = data.curso;
 
-    // BIENVENIDA / CONTENIDO CENTRAL
+    // BIENVENIDA O CONTENIDO CENTRAL
     const nombrePrincipal = document.getElementById("nombrePrincipal");
-    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto;
+    if (nombrePrincipal) nombrePrincipal.textContent = "Estudiante: " + nombreCompleto; //Estudiante luego viene el nombre.
 
     const cursoPrincipal = document.getElementById("cursoPrincipal");
     if (cursoPrincipal) cursoPrincipal.textContent = data.curso;
 
+    // EN CALIFICACION O OTRAS PÁGINAS CON OTROS ELEMENTOS
     const studentNameMain = document.getElementById("student-name-main");
     if (studentNameMain) studentNameMain.textContent = nombreCompleto;
 
@@ -174,7 +137,6 @@ function limpiarInputs() {
 // ===============================
 function cerrarSesion() {
     localStorage.removeItem("estudiante");
-    localStorage.removeItem("paginaActual"); // limpiar página guardada
     window.location.href = "index.html";
 }
 
@@ -196,7 +158,6 @@ function togglePasswordVisibility() {
         eyeClose.style.display = "none";
     }
 }
-
 // ===============================
 // SCROLL MENÚ
 // ===============================
@@ -205,73 +166,59 @@ function scrollMenu(valor) {
     if (menu) menu.scrollLeft += valor;
 }
 
-// ===============================
-// TOGGLE LATERAL
-// ===============================
-function toggleMenu() {
-    const sidebar = document.querySelector('.sidebar');
-    if (!sidebar) return;
-
-    sidebar.classList.toggle('activo');
-
-    // Guardar la página actual para mantener el contexto
-    const paginaActual = window.location.pathname.split('/').pop();
-    localStorage.setItem('paginaActual', paginaActual);
-}
-
-// ===============================
-// PUBLICIDAD DE IMÁGENES
-// ===============================
+//PARA PIBLICIDAD DE IMAGENES
 document.addEventListener("DOMContentLoaded", () => {
     const slides = document.querySelectorAll(".publicidad img");
     const prevBtn = document.querySelector(".prev");
     const nextBtn = document.querySelector(".next");
   
     let index = 0;
-    let interval = setInterval(showNext, 4000);
+    let interval = setInterval(showNext, 4000); // cambio automático cada 4s
   
     function showSlide(n) {
-        slides.forEach((img, i) => {
-            img.classList.remove("active");
-            if (i === n) img.classList.add("active");
-        });
+      slides.forEach((img, i) => {
+        img.classList.remove("active");
+        if (i === n) img.classList.add("active");
+      });
     }
   
     function showNext() {
-        index = (index + 1) % slides.length;
-        showSlide(index);
+      index = (index + 1) % slides.length;
+      showSlide(index);
     }
   
     function showPrev() {
-        index = (index - 1 + slides.length) % slides.length;
-        showSlide(index);
+      index = (index - 1 + slides.length) % slides.length;
+      showSlide(index);
     }
   
     nextBtn.addEventListener("click", () => {
-        showNext();
-        resetTimer();
+      showNext();
+      resetTimer();
     });
   
     prevBtn.addEventListener("click", () => {
-        showPrev();
-        resetTimer();
+      showPrev();
+      resetTimer();
     });
   
     function resetTimer() {
-        clearInterval(interval);
-        interval = setInterval(showNext, 4000);
+      clearInterval(interval);
+      interval = setInterval(showNext, 4000);
     }
 });
-
 // ===============================
-// RESALTAR CABECERA AUTOMÁTICO
+// PARA RESALTAR CABECERA AUTOMATIC
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelectorAll("#menuScroll a");
+
+    // Obtener la página actual
     const currentPage = window.location.pathname.split("/").pop();
 
     links.forEach(link => {
         const linkPage = link.getAttribute("href");
+
         if (linkPage === currentPage) {
             link.classList.add("activo");
         } else {
@@ -279,3 +226,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
