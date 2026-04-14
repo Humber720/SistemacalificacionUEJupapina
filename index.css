@@ -1,56 +1,75 @@
-/* RESET */
+/* =========================
+   RESET
+========================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* BODY GENERAL */
+/* =========================
+   BODY (FONDO MODERNO)
+========================= */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #4facfe, #00f2fe);
     min-height: 100vh;
+    background: linear-gradient(135deg, #035bfd, #2a5298, #6a11cb);
     display: flex;
     flex-direction: column;
 }
 
-/* ENCABEZADO */
+/* =========================
+   HEADER
+========================= */
 header {
-    background: rgba(0, 0, 0, 0.2);
-    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #ffd900, #f5f109);
     text-align: center;
-    padding: 15px;
+    padding: 14px;
     font-weight: bold;
-    letter-spacing: 1px;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
 }
 
-/* CONTENEDOR */
+/* =========================
+   CONTENEDOR
+========================= */
 .container {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 90px 15px 70px;
 }
 
-/* CAJA LOGIN */
+/* =========================
+   LOGIN BOX
+========================= */
 .login-box {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px 25px;
-    border-radius: 20px;
     width: 100%;
-    max-width: 380px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    text-align: center;
-    animation: aparecer 0.6s ease;
+    max-width: 420px;
+
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+    backdrop-filter: blur(18px);
+
+    border-radius: 25px;
+    padding: 35px 25px;
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.2);
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+
+    animation: fadeIn 0.7s ease;
 }
 
 /* ANIMACIÓN */
-@keyframes aparecer {
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(40px);
     }
     to {
         opacity: 1;
@@ -58,59 +77,82 @@ header {
     }
 }
 
-/* TITULOS */
+/* =========================
+   TEXTOS
+========================= */
 .login-box h3 {
-    color: #555;
-    margin-bottom: 5px;
+    text-align: center;
+    opacity: 0.8;
 }
 
 .login-box h1 {
-    color: #2c3e50;
+    text-align: center;
     margin-bottom: 10px;
+    font-size: 26px;
 }
 
-/* TEXTO INFO */
 .info {
-    font-size: 14px;
-    color: #666;
+    text-align: center;
+    font-size: 13px;
     margin-bottom: 20px;
+    opacity: 0.8;
 }
 
-/* LABEL */
+/* =========================
+   INPUTS
+========================= */
 label {
+    font-size: 13px;
+    margin-bottom: 6px;
     display: block;
-    text-align: left;
-    font-size: 14px;
-    margin: 10px 0 5px;
-    color: #333;
 }
 
-/* INPUT CONTENEDOR */
 .input-container {
     position: relative;
+    margin-bottom: 18px;
 }
 
-/* INPUT */
 input {
     width: 100%;
-    padding: 12px 40px 12px 12px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    padding: 14px 45px 14px 15px;
+    border-radius: 12px;
+    border: 2px solid transparent;
     outline: none;
     font-size: 15px;
+
+    background: #ffffff;
+    color: #000;
+
     transition: 0.3s;
 }
 
-/* EFECTO INPUT */
-input:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52,152,219,0.5);
+/* PLACEHOLDER */
+input::placeholder {
+    color: #888;
 }
 
-/* ICONO OJO */
+/* FOCUS MODERNO */
+input:focus {
+    border: 2px solid #ffd900;
+    box-shadow: 0 0 8px rgba(255,217,0,0.5);
+    transform: scale(1.02);
+}
+
+/* =========================
+   QUITAR FLECHAS NUMBER
+========================= */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* =========================
+   ICONO OJO
+========================= */
 .toggle {
     position: absolute;
-    right: 10px;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
@@ -119,72 +161,98 @@ input:focus {
 }
 
 .toggle:hover {
-    color: #3498db;
-    transform: translateY(-50%) scale(1.1);
+    color: #000;
 }
 
-/* BOTÓN */
+/* =========================
+   BOTÓN
+========================= */
 button {
     width: 100%;
-    padding: 12px;
-    margin-top: 20px;
+    padding: 14px;
+    border-radius: 12px;
     border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #36d1dc, #5b86e5);
-    color: white;
+
+    background: linear-gradient(135deg, #ffd900, #f5f109);
+    color: #000;
     font-size: 16px;
+    font-weight: bold;
+
+    margin-top: 10px;
     cursor: pointer;
+
     transition: 0.3s;
 }
 
-/* EFECTO BOTÓN */
+/* HOVER */
 button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
 
+/* CLICK */
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.96);
 }
 
-/* MENSAJE */
+/* =========================
+   MENSAJE
+========================= */
 #mensaje {
+    text-align: center;
     margin-top: 10px;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #0d0349;
+    color: white;
     text-align: center;
     padding: 10px;
-    color: white;
-    font-size: 14px;
-    background: rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
+    font-size: 13px;
 }
 
-/* ========================= */
-/* 📱 RESPONSIVE (CELULAR) */
-/* ========================= */
-@media (max-width: 480px) {
+/* =========================
+   AUTOFILL FIX (IMPORTANTE)
+========================= */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+    -webkit-text-fill-color: #000 !important;
+}
 
+/* =========================
+   RESPONSIVE
+========================= */
+
+/* CELULAR */
+@media (max-width: 480px) {
     .login-box {
         padding: 25px 20px;
-        border-radius: 15px;
     }
 
-    h1 {
-        font-size: 20px;
+    .login-box h1 {
+        font-size: 22px;
     }
+}
 
-    input {
-        font-size: 14px;
-        padding: 10px 35px 10px 10px;
+/* TABLET */
+@media (min-width: 768px) {
+    .login-box {
+        max-width: 450px;
     }
+}
 
-    button {
-        font-size: 14px;
-        padding: 10px;
+/* PC */
+@media (min-width: 1024px) {
+    .login-box {
+        max-width: 480px;
+        padding: 40px;
     }
 }
