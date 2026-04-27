@@ -1,25 +1,35 @@
 // ===============================
+// AUTOMATIZACIÓN DE ASISTENCIA
+// ===============================
+function obtenerPuntaje(asistencia) {
+    switch (asistencia) {
+        case "PRESENTE": return 100;
+        case "FALTA": return 0;
+        case "PERMISO": return 100;
+        case "ATRASO": return 80;
+        default: return 0;
+    }
+}
+
+// ===============================
 // DATOS DE ENSAYOS POR ESTUDIANTE
 // ===============================
 const bandaData = {
-    "1234567": {
+    "12735760": {
         instrumento: "Tambor (Redoble)",
         codigo: "TAM-10",
         ensayos: [
-            { actividad: "Ensayo tarde", dia: "Miércoles 20 de Agosto", asistencia: "PRESENTE", puntaje: 100, observacion: "" },
-            { actividad: "Ensayo tarde", dia: "Miércoles 27 de Agosto", asistencia: "PRESENTE", puntaje: 100, observacion: "" },
-            { actividad: "Ensayo tarde", dia: "Lunes 1 de Septiembre", asistencia: "PRESENTE", puntaje: 100, observacion: "" },
-            { actividad: "Ensayo tarde", dia: "Viernes 12 de Septiembre", asistencia: "PRESENTE", puntaje: 100, observacion: "" },
+            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" },
+            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" },
+            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" },
+            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" }
         ]
     },
-    "7654321": {
-        instrumento: "Trompeta",
+    "1234567": {
+        instrumento: "Ninguno",
         codigo: "TPT-03",
         ensayos: [
-            { actividad: "Ensayo tarde", dia: "Miércoles 20 de Agosto", asistencia: "FALTA", puntaje: 0, observacion: "" },
-            { actividad: "Ensayo tarde", dia: "Miércoles 27 de Agosto", asistencia: "PRESENTE", puntaje: 100, observacion: "" },
-            { actividad: "Ensayo tarde", dia: "Lunes 1 de Septiembre", asistencia: "FALTA", puntaje: 0, observacion: "" },
-            { actividad: "Ensayo tarde", dia: "Viernes 12 de Septiembre", asistencia: "PRESENTE", puntaje: 100, observacion: "" },
+            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" }
         ]
     }
 };
@@ -29,55 +39,52 @@ const bandaData = {
 // ===============================
 window.addEventListener("DOMContentLoaded", () => {
     const estudiante = JSON.parse(localStorage.getItem("estudiante"));
+
     if (!estudiante) {
         alert("Debes iniciar sesión para ver esta página");
         window.location.href = "index.html";
         return;
     }
 
-    // Mostrar perfil en la página y en el header
     mostrarPerfil(estudiante);
-
-    // Cargar ensayos y calcular promedio
     cargarEnsayos(estudiante);
-
-    // Inicializar dropdown
     initDropdown();
-
-    // Inicializar funcionalidad de compromiso
     initCompromiso();
 });
 
+// ===============================
+// MOSTRAR PERFIL
+// ===============================
 function mostrarPerfil(estudiante) {
-    // Obtener elementos
-    const studentName = document.getElementById("student-name"); // botón header
-    const nombreCompleto = document.getElementById("nombreCompleto"); // dropdown
+    const studentName = document.getElementById("student-name");
+    const nombreCompletoEl = document.getElementById("nombreCompleto");
     const courseName = document.getElementById("course-name");
 
     const instrumentName = document.getElementById("instrument-name");
     const codigoName = document.getElementById("codigo-name");
 
-    // ✅ Obtener solo el primer nombre
-    const primerNombre = estudiante.nombreCompleto.split(" ")[0];
+    // ✅ Nombre completo correcto
+    const nombreCompleto = estudiante.nombre + " " + estudiante.apellido;
 
-    // ✅ Mostrar en el botón (solo nombre)
-    if (studentName) studentName.textContent = primerNombre;
+    // ✅ Mostrar hasta 2 nombres
+    const nombres = (estudiante.nombre || "").split(" ");
+    const nombreMostrar = nombres.slice(0, 2).join(" ");
 
-    // ✅ Mostrar en dropdown (nombre completo)
-    if (nombreCompleto) nombreCompleto.textContent = estudiante.nombreCompleto;
+    // HEADER (botón)
+    if (studentName) studentName.textContent = nombreMostrar;
 
-    // ✅ Mostrar curso
+    // PERFIL COMPLETO
+    if (nombreCompletoEl) nombreCompletoEl.textContent = nombreCompleto;
+
+    // CURSO
     if (courseName) courseName.textContent = estudiante.curso;
 
-    // ===============================
     // DATOS DE BANDA
-    // ===============================
     const bandaInfo = bandaData[estudiante.ci] || {};
 
     if (instrumentName) instrumentName.textContent = bandaInfo.instrumento || "—";
     if (codigoName) codigoName.textContent = bandaInfo.codigo || "—";
 }
-
 // ===============================
 // CARGAR ENSAYOS Y PROMEDIO
 // ===============================
@@ -86,6 +93,7 @@ function cargarEnsayos(estudiante) {
     if (!tbody) return;
 
     tbody.innerHTML = "";
+
     const ensayos = (bandaData[estudiante.ci] || {}).ensayos || [];
 
     let total = 0;
@@ -94,45 +102,55 @@ function cargarEnsayos(estudiante) {
     ensayos.forEach(e => {
         const fila = document.createElement("tr");
 
-        // 🎯 COLOR SEGÚN NOTA
-        if (e.puntaje < 51) {
+        const puntaje = obtenerPuntaje(e.asistencia);
+
+        if (puntaje < 51) {
             fila.classList.add("reprobado");
         } else {
             fila.classList.add("aprobado");
         }
 
-fila.innerHTML = `
-    <td>${e.actividad}</td>
-    <td>${e.dia}</td>
-    <td>${e.asistencia}</td>
-    <td><span class="puntaje">${e.puntaje}</span></td>
-    <td>${e.observacion || ""}</td>
-`;
+        fila.innerHTML = `
+            <td>${e.actividad}</td>
+            <td>${e.dia}</td>
+            <td>${e.asistencia}</td>
+            <td><span class="puntaje">${puntaje}</span></td>
+            <td>${e.observacion || ""}</td>
+        `;
 
         tbody.appendChild(fila);
 
-        total += e.puntaje;
+        total += puntaje;
         count++;
     });
 
     // ===============================
+    // VALIDAR SI HAY DATOS REALES
+    // ===============================
+    const ensayosValidos = ensayos.filter(e => obtenerPuntaje(e.asistencia) > 0);
+
+    if (ensayosValidos.length === 0) {
+        const filaMensaje = document.createElement("tr");
+        filaMensaje.innerHTML = `
+            <td colspan="5" style="text-align:center; font-weight:bold;">
+                USTED NO ES PARTE DE LA BANDA DE MÚSICA
+            </td>
+        `;
+        tbody.appendChild(filaMensaje);
+        return;
+    }
+
+    // ===============================
     // PROMEDIO FINAL
     // ===============================
-    const promedio = count > 0 ? Math.round(total / count) : 0;
+    const suma = ensayosValidos.reduce((sum, e) => sum + obtenerPuntaje(e.asistencia), 0);
+    const promedio = Math.round(suma / ensayosValidos.length);
+
     const estadoFinal = promedio >= 51 ? "APROBADO(A)" : "REPROBADO(A)";
+    const clasePromedio = promedio < 51 ? "nota-baja" : "nota-alta";
 
     const filaPromedio = document.createElement("tr");
 
-    // 🎯 CLASE PARA NÚMERO Y ESTADO
-    let clasePromedio = "";
-
-    if (promedio < 51) {
-        clasePromedio = "nota-baja";
-    } else {
-        clasePromedio = "nota-alta";
-    }
-
-    // ✅ FILA COMPLETA
     filaPromedio.innerHTML = `
         <td><b>PROMEDIO</b></td>
         <td></td>
@@ -145,11 +163,12 @@ fila.innerHTML = `
 }
 
 // ===============================
-// DROPDOWN HEADER
+// DROPDOWN
 // ===============================
 function initDropdown() {
     const toggleBtn = document.getElementById("dropdownToggle");
     const dropdownMenu = document.getElementById("dropdownMenu");
+
     if (toggleBtn && dropdownMenu) {
         toggleBtn.addEventListener("click", () => {
             dropdownMenu.classList.toggle("hidden");
@@ -158,41 +177,24 @@ function initDropdown() {
 }
 
 // ===============================
-// MOSTRAR / OCULTAR COMPROMISO
+// COMPROMISO
 // ===============================
 function initCompromiso() {
     const contenedor = document.getElementById('contenedorImagen');
     const img = document.getElementById('imagen');
+
     if (!contenedor || !img) return;
 
     let anchoActual = 100;
-    const minAncho = 30;
-    const maxAncho = 100;
 
-    document.getElementById('mostrarBtn').addEventListener('click', () => {
+    document.getElementById('mostrarBtn').onclick = () => {
         contenedor.style.display = 'block';
         img.style.width = anchoActual + '%';
-    });
+    };
 
-    document.getElementById('ocultarBtn').addEventListener('click', () => {
+    document.getElementById('ocultarBtn').onclick = () => {
         contenedor.style.display = 'none';
-    });
-
-    document.getElementById('aumentar').addEventListener('click', () => {
-        if (anchoActual < maxAncho) {
-            anchoActual += 10;
-            if (anchoActual > maxAncho) anchoActual = maxAncho;
-            img.style.width = anchoActual + '%';
-        }
-    });
-
-    document.getElementById('reducir').addEventListener('click', () => {
-        if (anchoActual > minAncho) {
-            anchoActual -= 10;
-            if (anchoActual < minAncho) anchoActual = minAncho;
-            img.style.width = anchoActual + '%';
-        }
-    });
+    };
 }
 // ===============================
 // MENÚ LATERAL (MÓVIL)
@@ -207,5 +209,14 @@ function toggleMenu() {
         window.location.href = "lateral.html";
     }
 }
+// ===============================
+// CERRAR SESIÓN
+// ===============================
+function cerrarSesion() {
+    localStorage.removeItem("estudiante");
 
-
+    // 👇 marcar que cerró sesión
+    sessionStorage.setItem("logout", "true");
+   // 👇 IMPORTANTE: replace (no permite volver atrás)
+    window.location.replace("index.html");
+}
