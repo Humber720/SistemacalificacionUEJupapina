@@ -42,10 +42,10 @@
 
       </div>
 
-      <!-- 👇 BOTÓN APARTE -->
-<button class="menu-lateral-btn" onclick="toggleMenu()">
-  ☰
-</button>
+        <!-- 👇 BOTÓN APARTE -->
+  <button class="menu-lateral-btn" onclick="toggleMenu()">
+    ☰
+  </button>
 
       <!-- PERFIL -->
       <div class="perfil-wrapper">
@@ -74,39 +74,39 @@
     </div>
   </header>
  
-<!-- Contenedor principal de calificación -->
-<div class="container">
-  <!-- Información del estudiante -->
-  <div class="student-info">
-    <h2>ESTUDIANTE: <span id="student-name-main"></span></h2>
-    <p><strong>Curso:</strong> <span id="course-name-main"></span></p>
+  <!-- Contenedor principal de calificación -->
+  <div class="container">
+    <!-- Información del estudiante -->
+    <div class="student-info">
+      <h2>ESTUDIANTE: <span id="student-name-main"></span></h2>
+      <p><strong>Curso:</strong> <span id="course-name-main"></span></p>
+    </div>
+  <!-- Tabla de calificaciones -->
+    <div class="table-wrapper">
+      <table class="grades-table">
+        <caption><b>NOTAS DE CALIFICACIÓN DE EDUCACIÓN MUSICAL</b></caption>
+        <thead>
+          <tr>
+            <th>Trimestre</th>
+            <th>Puntaje</th>
+            <th>Autoevaluación</th>
+            <th>Calificación</th>
+            <th>Estado</th>
+            <th>Observación</th>
+          </tr>
+        </thead>
+        <tbody id="grades-table">
+          <!-- Las filas se insertan desde calificacion.js -->
+        </tbody>
+      </table>
+    </div>
   </div>
-<!-- Tabla de calificaciones -->
-  <div class="table-wrapper">
-    <table class="grades-table">
-      <caption><b>NOTAS DE CALIFICACIÓN DE EDUCACIÓN MUSICAL</b></caption>
-      <thead>
-        <tr>
-          <th>Trimestre</th>
-          <th>Puntaje</th>
-          <th>Autoevaluación</th>
-          <th>Calificación</th>
-          <th>Estado</th>
-          <th>Observación</th>
-        </tr>
-      </thead>
-      <tbody id="grades-table">
-        <!-- Las filas se insertan desde calificacion.js -->
-      </tbody>
-    </table>
-  </div>
-</div>
     <!-- Contenido principal entrevista -->
       <div class="container">
+          <!--INFORME DE ENTREVISTA PEDAGÓGICA -->
+        <h3 style="text-align:center;">NOTA DE EXAMEN TEORICA 1ER TRIMESTRE</h3>
 
-        <h3 style="text-align:center;">INFORME DE ENTREVISTA PEDAGÓGICA</h3>
-
-        <div style="text-align:center; margin: 15px 0;">
+         <!--<div style="text-align:center; margin: 15px 0;">
           <button onclick="verNota()" class="btn-ver">📄 Ver Informe</button>
           <button onclick="descargarNota()" class="btn-descargar">⬇ Descargar</button>
         </div>
@@ -118,14 +118,24 @@
         </p>
 
         <!-- VISOR PDF -->
-        <div class="visor-container">
+        <!--<div class="visor-container">
           <iframe id="visorPDF" src=""></iframe>
-        </div>
-
+        </div>-->
+      
+        <center><button id="btnNota">Ver Nota de Examen</button></center>
+  
       </div>
+        <!-- MODAL NOTA EXAMEN -->
+  <div id="modalNota" class="modal">
+    <div class="modal-contenido">
+      <h3>Resultado de Examen</h3>
+      <div id="resultado"></div>
+      <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
 
 <!-- Scripts -->
     <script src="calificacion.js"></script>
-
-
+    <script src="examen.js"></script>
+</body>
 </html>
