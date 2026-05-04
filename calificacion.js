@@ -335,21 +335,21 @@ const estudiantesNotas = {
     // 3ro de Secundaria
     "15781711": { // ALI MAMANI ASCENCIO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "35", autoevaluacion: "5", observacion: "Completar hasta Martes" },
+            { trimestre: "1er Trim.", puntaje: "34", autoevaluacion: "5", observacion: "Completar hasta Martes" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "12454396": { // CALATAYUD YUJRA BRENDA
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "68", autoevaluacion: "4", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "67", autoevaluacion: "4", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "16906396": { // CHINO COYO GENESIS
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "57", autoevaluacion: "", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "56", autoevaluacion: "4", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
@@ -363,35 +363,35 @@ const estudiantesNotas = {
     },
     "12863798": { // CORINA QUISPE JUAN FERNANDO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "40", autoevaluacion: "5", observacion: "Completar hasta Martes" },
+            { trimestre: "1er Trim.", puntaje: "38", autoevaluacion: "5", observacion: "Completar hasta Martes" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "12894836": { // CUTIPA ESPEJO CRISTIAN ELVIS
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "74", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "73", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "12735760": { // ESPEJO ALANOCA KEYLA ALEIDIS
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "85", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "80", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "14007065": { // FLORES HUMEREZ JASIEL NOEMI
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "74", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "71", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "14481933": { // FLORES VARGAS MIGUEL ANGEL
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "70", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "69", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
@@ -405,63 +405,63 @@ const estudiantesNotas = {
     },
     "15377451": { // GONZALES ROSAS RICARDO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "65", autoevaluacion: "", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "65", autoevaluacion: "3", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "15467033": { // GUARACHI LIMACHI FABRICIO DANIEL
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "64", autoevaluacion: "4", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "61", autoevaluacion: "4", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "13118786": { // GUARACHI MARTINEZ ZOEY SUMAYA
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "76", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "72", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "17981853": { // IRAIPI MORALES FRANK REINALDO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "22", autoevaluacion: "", observacion: "Completar hasta Martes" },
+            { trimestre: "1er Trim.", puntaje: "21", autoevaluacion: "4", observacion: "Completar hasta Martes" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "14678752": { // KENAPP FLORES JOSE DAVID
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "12", autoevaluacion: "", observacion: "Completar hasta Martes" },
+            { trimestre: "1er Trim.", puntaje: "12", autoevaluacion: "4", observacion: "Completar hasta Martes" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "13119655": { // LUNA MERLO KEVIN PATRICIO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "49", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "48", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "13053567": { // MAMANI HUANCA JHENNY YOSELIN
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "56", autoevaluacion: "", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "55", autoevaluacion: "4", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "15069633": { // MAYTA MAMANI JUAN RODRIGO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "48", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "45", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "16188827": { // POMA QUISPE JULIAN NEYMAR
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "58", autoevaluacion: "", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "60", autoevaluacion: "3", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
@@ -475,14 +475,14 @@ const estudiantesNotas = {
     },
     "14041113": { // QUISPE PAUCARA DRAKE NOLAND
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "73", autoevaluacion: "4", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "74", autoevaluacion: "4", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "13491581": { // QUISPE QUISPE LEIDY FLORA
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "84", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "83", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
@@ -496,28 +496,28 @@ const estudiantesNotas = {
     },
     "15466974": { // SANCHEZ PAUCARA EMILI CLARA
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "67", autoevaluacion: "", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "68", autoevaluacion: "3", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "15453680": { // TAPIA SEJAS AARON JUSTINIANO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "91", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "90", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "14007170": { // TICONA LIMA ANGELA MASHIEL
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "48", autoevaluacion: "4", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "44", autoevaluacion: "4", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "15055926": { // VALVERDE SANCHEZ VICTOR FERNANDO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "41", autoevaluacion: "", observacion: "Completar hasta Martes" },
+            { trimestre: "1er Trim.", puntaje: "38", autoevaluacion: "3", observacion: "Completar hasta Martes" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
@@ -531,14 +531,14 @@ const estudiantesNotas = {
     },
     "13393302": { // ZACARI PAUCARA LESLIE MAYLI
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "66", autoevaluacion: "", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "63", autoevaluacion: "3", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "14107325": { // ZAMBRANA OMONTE JOSE ANTONIO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "58", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "54", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
