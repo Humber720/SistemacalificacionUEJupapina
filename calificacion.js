@@ -335,7 +335,7 @@ const estudiantesNotas = {
     // 3ro de Secundaria
     "15781711": { // ALI MAMANI ASCENCIO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "34", autoevaluacion: "5", observacion: "Completar hasta Martes" },
+            { trimestre: "1er Trim.", puntaje: "36", autoevaluacion: "5", observacion: "Completar hasta Martes" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
@@ -377,7 +377,7 @@ const estudiantesNotas = {
     },
     "12735760": { // ESPEJO ALANOCA KEYLA ALEIDIS
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "80", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "82", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
@@ -412,14 +412,14 @@ const estudiantesNotas = {
     },
     "15467033": { // GUARACHI LIMACHI FABRICIO DANIEL
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "61", autoevaluacion: "4", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "62", autoevaluacion: "4", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
     "13118786": { // GUARACHI MARTINEZ ZOEY SUMAYA
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "72", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "74", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
@@ -454,7 +454,7 @@ const estudiantesNotas = {
     },
     "15069633": { // MAYTA MAMANI JUAN RODRIGO
         calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "45", autoevaluacion: "5", observacion: "" },
+            { trimestre: "1er Trim.", puntaje: "46", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
