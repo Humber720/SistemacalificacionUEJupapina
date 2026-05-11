@@ -350,9 +350,9 @@ const estudiantesNotas = {
 
     "13393302": { // LESLIE MAYLI ZACARI PAUCARA
         calificaciones: {
-            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" }
+            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
                  { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
-                  { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
+                  { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" }
             ],
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
