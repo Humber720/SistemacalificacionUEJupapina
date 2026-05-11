@@ -39,10 +39,83 @@ const estudiantesNotas = {
 // ===============================
 // 3ro de Secundaria
 // ===============================
-    "12894836": { // CRISTIAN ELVIS CUTIPA ESPEJO
+    "15781711": { // ALI MAMANI ASCENCIO
+        calificaciones: {
+            "1er Trim.": [
+                { area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" }
+            ],
+            "2do Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ],
+            "3er Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ]
+        }
+    },
+    "12454396": { // CALATAYUD YUJRA BRENDA
         calificaciones: {
             "1er Trim.": [
                 { area: "", calificacion: "", observacion: "" }
+            ],
+            "2do Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ],
+            "3er Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ]
+        }
+    },
+    "16906396": { // CHINO COYO GENESIS
+        calificaciones: {
+            "1er Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ],
+            "2do Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ],
+            "3er Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ]
+        }
+    },
+    "14650991": { // CHOQUE APAZA ALEX WILDER
+        calificaciones: {
+            "1er Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ],
+            "2do Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ],
+            "3er Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ]
+        }
+    },
+    "12863798": { // CORINA QUISPE JUAN FERNANDO
+        calificaciones: {
+            "1er Trim.": [
+                { area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
+                { area: "ARTES PLÁSTICAS Y VISUALES", calificacion: "47", observacion: "" },
+                { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
+                { area: "TÉCNICA TECNOLOGICA ESPECIALIZADA", calificacion: "40", observacion: "" },
+                { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "35", observacion: "" },
+                { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
+                { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
+                { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" },
+                { area: "VALORES, ESPIRITUALIDADES Y RELIGIONES", calificacion: "48", observacion: "" }
+            ],
+            "2do Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ],
+            "3er Trim.": [
+                { area: "", calificacion: "", observacion: "" }
+            ]
+        }
+    },
+    "12894836": { // CRISTIAN ELVIS CUTIPA ESPEJO
+        calificaciones: {
+            "1er Trim.": [
+                { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "48", observacion: "" }
             ],
             "2do Trim.": [
                 { area: "", calificacion: "", observacion: "" }
@@ -115,15 +188,38 @@ const estudiantesNotas = {
 
     "17981853": { // FRANK REINALDO IRAIPI MORALES
         calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
+                    { area: "EDUCACIÓN MUSICAL", calificacion: "46", observacion: "" },
+                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
+                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" },
+                    { area: "VALORES, ESPIRITUALIDADES Y RELIGIONES", calificacion: "46", observacion: "" }
+            ],
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
     },
-
+    "14678752": { // KENAPP FLORES JOSE DAVID
+        calificaciones: {
+            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
+                    { area: "LENGUA EXTRANJERA", calificacion: "46", observacion: "" },
+                    { area: "EDUCACIÓN MUSICAL", calificacion: "41", observacion: "" },
+                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "40", observacion: "" },
+                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
+                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" },
+                    { area: "VALORES, ESPIRITUALIDADES Y RELIGIONES", calificacion: "47", observacion: "" }
+            ],
+            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
+        }
+    },
     "13119655": { // KEVIN PATRICIO LUNA MERLO
         calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "1er Trim.": [{ area: "CIENCIAS SOCIALES", calificacion: "43", observacion: "" }],
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
@@ -131,7 +227,7 @@ const estudiantesNotas = {
 
     "13053567": { // JHENNY YOSELIN MAMANI HUANCA
         calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "1er Trim.": [{ area: "MATEMÁTICA", calificacion: "42", observacion: "" }],
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
@@ -155,7 +251,10 @@ const estudiantesNotas = {
 
     "16575605": { // GUADALUPE TATIANA QUISPE CARRILLO
         calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "1er Trim.": [{ area: "ARTES PLÁSTICAS Y VISUALES", calificacion: "49", observacion: "" },
+                { area: "MATEMÁTICA", calificacion: "42", observacion: "" },
+                { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" }
+            ],
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
@@ -179,7 +278,15 @@ const estudiantesNotas = {
 
     "15432789": { // KEVIN RAMIREZ VARGAS
         calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
+                    { area: "LENGUA EXTRANJERA", calificacion: "48", observacion: "" },
+                    { area: "CIENCIAS SOCIALES", calificacion: "43", observacion: "" },
+                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "43", observacion: "" },
+                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
+                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" }
+            ],     
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
@@ -203,7 +310,13 @@ const estudiantesNotas = {
 
     "14007170": { // ANGELA MASHIEL TICONA LIMA
         calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
+                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "40", observacion: "" },
+                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
+                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" }
+            ],    
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
@@ -211,7 +324,17 @@ const estudiantesNotas = {
 
     "15055926": { // VICTOR FERNANDO VALVERDE SANCHEZ
         calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
+                    { area: "CIENCIAS SOCIALES", calificacion: "42", observacion: "" },
+                    { area: "EDUCACIÓN MUSICAL", calificacion: "46", observacion: "" },
+                    { area: "ARTES PLÁSTICAS Y VISUALES", calificacion: "49", observacion: "" },
+                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
+                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "40", observacion: "" },
+                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "41", observacion: "" },
+                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "41", observacion: "" },
+                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" },
+                    { area: "VALORES, ESPIRITUALIDADES Y RELIGIONES", calificacion: "46", observacion: "" }
+            ],
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
@@ -227,7 +350,10 @@ const estudiantesNotas = {
 
     "13393302": { // LESLIE MAYLI ZACARI PAUCARA
         calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
+            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" }
+                 { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
+                  { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
+            ],
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
