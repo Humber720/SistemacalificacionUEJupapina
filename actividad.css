@@ -1,179 +1,126 @@
-/* ============================= */
-/* CONTENEDOR GENERAL */
-.seccion {
-  max-width: 1100px;
-  margin: 25px auto;
-  padding: 20px;
+/* ================= RESET BÁSICO ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* TÍTULOS */
-.seccion h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 20px;
-  font-size: 26px;
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #cfd9df);
+    color:#1f2937;
 }
 
-/* ============================= */
-/* CONTENIDO INTERACTIVO */
-.contenido-interactivo {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
+/* ================= CONTENEDOR GENERAL ================= */
+.contenido-interactivo{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap:18px;
+    padding:20px;
 }
 
-/* TARJETAS DE ACTIVIDAD */
-.curso-contenido {
-  display: none; /* importante para JS */
-  background: linear-gradient(135deg, #ffffff, #f0f8ff);
-  border-radius: 15px;
-  padding: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+/* ================= TARJETAS ================= */
+.curso-contenido{
+    background:#fff;
+    border-radius:18px;
+    padding:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    transition:0.3s ease;
+    overflow:hidden;
+    position:relative;
 }
 
-/* EFECTO HOVER */
-.curso-contenido:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+.curso-contenido:hover{
+    transform: translateY(-6px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
 }
 
-/* EFECTO BRILLO */
-.curso-contenido::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-  transition: 0.5s;
+/* ================= COLORES POR CURSO ================= */
+.primero{border-top:6px solid #ff6b6b;}
+.segundo{border-top:6px solid #4dabf7;}
+.tercero{border-top:6px solid #51cf66;}
+.cuarto{border-top:6px solid #ffd43b;}
+.quinto{border-top:6px solid #ff922b;}
+.sexto{border-top:6px solid #845ef7;}
+
+/* ================= TEXTO ================= */
+h2,h3{
+    text-align:center;
+    margin:10px 0;
 }
 
-.curso-contenido:hover::before {
-  left: 100%;
+p{
+    font-size:14px;
+    text-align:center;
+    line-height:1.4;
+    margin:6px 0;
 }
 
-/* TITULO ACTIVIDAD */
-.curso-contenido h3 {
-  color: #2980b9;
-  margin-bottom: 8px;
+/* ================= IMAGENES ================= */
+.curso-contenido img{
+    width:100%;
+    border-radius:12px;
+    transition:0.3s;
 }
 
-/* TEXTO */
-.curso-contenido p {
-  color: #555;
-  margin-bottom: 10px;
+.curso-contenido img:hover{
+    transform:scale(1.03);
 }
 
-/* IFRAME */
-.curso-contenido iframe {
-  border-radius: 10px;
-  border: none;
-  width: 100%;
-  height: 300px;
+/* ================= IFRAMES ================= */
+iframe{
+    width:100%;
+    height:320px;
+    border:none;
+    border-radius:12px;
 }
 
-/* ============================= */
-/* FORMULARIO DRIVE */
-.formulario-drive {
-  max-width: 900px;
-  margin: 30px auto;
-  padding: 20px;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  border-radius: 15px;
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+/* ================= BOTONES ================= */
+.btn{
+    display:block;
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    text-align:center;
 }
 
-.formulario-drive h3 {
-  margin-bottom: 15px;
-  font-size: 22px;
+.btn:hover{
+    transform:scale(1.03);
+    opacity:0.95;
 }
 
-/* IFRAME FORM */
-.formulario-drive iframe {
-  border-radius: 12px;
-  border: none;
-  width: 100%;
-  height: 450px;
-  background: #fff;
+/* VIDEO */
+.btn-video{
+    background:linear-gradient(45deg,#ff3b3b,#b91c1c);
+    color:white;
 }
 
-/* ============================= */
-/* AUTOEVALUACIÓN */
-#autoevaluacion {
-  max-width: 1000px;
-  margin: 30px auto;
-  padding: 20px;
-  background: #f4f8fb;
-  border-radius: 15px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+/* EVALUACIÓN */
+.btn-eval{
+    background:linear-gradient(45deg,#22c55e,#16a34a);
+    color:white;
 }
 
-#autoevaluacion h2 {
-  color: #27ae60;
+/* OTROS */
+.btn-azul{
+    background:linear-gradient(45deg,#3b82f6,#1d4ed8);
+    color:white;
 }
 
-/* TEXTO */
-#autoevaluacion p {
-  font-size: 15px;
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
+/* ================= RESPONSIVE ================= */
+@media (max-width:768px){
+    .contenido-interactivo{
+        grid-template-columns:1fr;
+        padding:10px;
+    }
 
-/* IFRAME */
-.iframe-container iframe {
-  width: 100%;
-  height: 500px;
-  border-radius: 12px;
-  border: none;
-}
-
-/* ============================= */
-/* RESPONSIVE */
-@media (max-width: 768px) {
-
-  .seccion h2 {
-    font-size: 22px;
-  }
-
-  .curso-contenido iframe {
-    height: 250px;
-  }
-
-  .formulario-drive iframe {
-    height: 400px;
-  }
-
-  .iframe-container iframe {
-    height: 400px;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .seccion {
-    padding: 10px;
-  }
-
-  .curso-contenido {
-    padding: 10px;
-  }
-
-  .curso-contenido iframe {
-    height: 200px;
-  }
-
-  .formulario-drive iframe {
-    height: 350px;
-  }
-
-  .iframe-container iframe {
-    height: 350px;
-  }
+    iframe{
+        height:220px;
+    }
 }
