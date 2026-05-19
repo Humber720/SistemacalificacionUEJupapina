@@ -205,6 +205,7 @@ const estudiantesNotas = {
         calificaciones: {
             "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
                     { area: "LENGUA EXTRANJERA", calificacion: "46", observacion: "" },
+                    { area: "CIENCIAS SOCIALES", calificacion: "43", observacion: "" },
                     { area: "EDUCACIÓN MUSICAL", calificacion: "41", observacion: "" },
                     { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
                     { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "40", observacion: "" },
@@ -219,7 +220,7 @@ const estudiantesNotas = {
     },
     "13119655": { // KEVIN PATRICIO LUNA MERLO
         calificaciones: {
-            "1er Trim.": [{ area: "CIENCIAS SOCIALES", calificacion: "43", observacion: "" }],
+            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
             "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
         }
