@@ -111,6 +111,7 @@ const notasExamen = {
     "13121449": { puntaje: 48 }, // CRISTOPHER MANUEL ESCOBAR OMONTE
     "14005594": { puntaje: 47 }, // WARA ESTER ESPEJO GUTIERREZ
     "13760384": { puntaje: 61 }, // VAYOLETH KAEL FLORES VARGAS
+    "11100594": { puntaje: 48 },   // MALENA PIA GAMARRA BROTON
     "10938045": { puntaje: 49 }, // JHAMIL EDGAR GUZMAN COHARITE
     "14645148": { puntaje: 35 }, // ANDREA HINOJOSA QUISPE
     "16263855": { puntaje: 12 }, // CLARA MAMANI LIMA
@@ -126,7 +127,7 @@ const notasExamen = {
     "15087156": { puntaje: 42 }, // ARTURO ANDRES ROQUE MENDOZA
     "15786673": { puntaje: 42 }, // EDDY VARGAS CHAMBILLA
     "12734905": { puntaje: 38 }, // ANGELO WILLIAMS VARGAS MAMANI
-    "1234567": { puntaje: 48 },   // MALENA PIA GAMARRA BROTON
+
  // 6TO DE SECUNDARIA
     "13492936": { puntaje: 63 }, // ALEXIS SANTIAGO ALVARADO CARVAJAL
     "11089147": { puntaje: 43 }, // YAMIL DEYMAR CASTILLO FLORES
