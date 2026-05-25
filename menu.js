@@ -145,6 +145,7 @@ const estudiantes = {
     "13121449": { nombre: "CRISTOPHER MANUEL", apellido: "ESCOBAR OMONTE", curso: "5to de Secundaria" },
     "14005594": { nombre: "WARA ESTER", apellido: "ESPEJO GUTIERREZ", curso: "5to de Secundaria" },
     "13760384": { nombre: "VAYOLETH KAEL", apellido: "FLORES VARGAS", curso: "5to de Secundaria" },
+    "11100594": { nombre: "MALENA PIA", apellido: "GAMARRA BROTON", curso: "5to de Secundaria" },
     "10938045": { nombre: "JHAMIL EDGAR", apellido: "GUZMAN COHARITE", curso: "5to de Secundaria" },
     "14645148": { nombre: "ANDREA", apellido: "HINOJOSA QUISPE", curso: "5to de Secundaria" },
     "16263855": { nombre: "CLARA", apellido: "MAMANI LIMA", curso: "5to de Secundaria" },
@@ -160,7 +161,6 @@ const estudiantes = {
     "15087156": { nombre: "ARTURO ANDRES", apellido: "ROQUE MENDOZA", curso: "5to de Secundaria" },
     "15786673": { nombre: "EDDY", apellido: "VARGAS CHAMBILLA", curso: "5to de Secundaria" },
     "12734905": { nombre: "ANGELO WILLIAMS", apellido: "VARGAS MAMANI", curso: "5to de Secundaria" },
-    "1234567": { nombre: "MALENA PIA", apellido: "GAMARRA BROTON", curso: "5to de Secundaria" },
 
     //6to de Secundaria
     "13492936": { nombre: "ALEXIS SANTIAGO", apellido: "ALVARADO CARVAJAL", curso: "6to de Secundaria" },
