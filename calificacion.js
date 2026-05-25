@@ -770,6 +770,13 @@ const estudiantesNotas = {
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
     },
+    "11100594": { // GAMARRA BROTON MALENA PIA
+        calificaciones: [
+            { trimestre: "1er Trim.", puntaje: "49", autoevaluacion: "5", observacion: "" },
+            { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
+            { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
+        ]
+    },
     "10938045": { // GUZMAN COHARITE JHAMIL EDGAR
         calificaciones: [
             { trimestre: "1er Trim.", puntaje: "65", autoevaluacion: "5", observacion: "" },
@@ -871,13 +878,6 @@ const estudiantesNotas = {
     "12734905": { // VARGAS MAMANI ANGELO WILLIAMS
         calificaciones: [
             { trimestre: "1er Trim.", puntaje: "60", autoevaluacion: "5", observacion: "" },
-            { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
-            { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
-        ]
-    },
-        "1234567": { // GAMARRA BROTON MALENA PIA
-        calificaciones: [
-            { trimestre: "1er Trim.", puntaje: "49", autoevaluacion: "5", observacion: "" },
             { trimestre: "2do Trim.", puntaje: "", autoevaluacion: "", observacion: "" },
             { trimestre: "3er Trim.", puntaje: "", autoevaluacion: "", observacion: "" }
         ]
