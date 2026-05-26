@@ -29,8 +29,13 @@ let navegacionInterna = false;
 // BASE DE DATOS DE ESTUDIANTES
 // ===============================
 const estudiantes = {
+        "11111110": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "6to de Secundaria" },
+        "22222220": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "6to de Secundaria" },
+        "33333330": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "6to de Secundaria" },
+        "44444440": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "6to de Secundaria" },
+        "55555550": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "6to de Secundaria" },
+        "66666660": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "3ro de Secundaria" },
     //1RO DE SECUNDARIA
-    "1234567": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "1ro de Secundaria" },
     "15048000": { nombre: "DANIELA", apellido: "APAZA QUISPE", curso: "1ro de Secundaria" },
     "15681353": { nombre: "REBECA", apellido: "CADENA GUZMAN", curso: "1ro de Secundaria" },
     "15092130": { nombre: "LUCIO IVAN", apellido: "CALLIZAYA MAMANI", curso: "1ro de Secundaria" },
