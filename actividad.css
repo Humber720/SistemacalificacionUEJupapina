@@ -73,97 +73,149 @@ p{
     transform:scale(1.03);
 }
 
-/* ================= IFRAMES ================= */
-iframe{
-    width:100%;
-    height:320px;
-    border:none;
-    border-radius:12px;
-}
-
-/* ================= BOTONES ================= */
-.btn{
-    display:block;
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border:none;
-    border-radius:12px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-    text-align:center;
-}
-
-.btn:hover{
-    transform:scale(1.03);
-    opacity:0.95;
-}
-
-/* VIDEO */
-.btn-video{
-    background:linear-gradient(45deg,#ff3b3b,#b91c1c);
-    color:white;
-}
-
-/* EVALUACIÓN */
 /* ================= BOTÓN EVALUACIÓN INTERACTIVO ================= */
 
 .btn-eval{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:15px auto;
+    padding:14px 26px;
+
     background:linear-gradient(135deg,#22c55e,#15803d);
     color:white;
-    position:relative;
-    overflow:hidden;
+
     border:none;
     border-radius:14px;
+
     font-size:16px;
     font-weight:bold;
     letter-spacing:0.5px;
+
+    cursor:pointer;
+
+    position:relative;
+    overflow:hidden;
+
     box-shadow:0 8px 18px rgba(34,197,94,0.35);
+
     transition:all 0.35s ease;
 }
 
 /* HOVER */
+
 .btn-eval:hover{
     transform:translateY(-4px) scale(1.03);
+
     box-shadow:0 14px 24px rgba(34,197,94,0.45);
+
     background:linear-gradient(135deg,#16a34a,#166534);
 }
 
 /* CLICK */
+
 .btn-eval:active{
     transform:scale(0.97);
 }
 
 /* BRILLO */
+
 .btn-eval::before{
     content:"";
+
     position:absolute;
     top:0;
     left:-120%;
+
     width:70%;
     height:100%;
+
     background:rgba(255,255,255,0.28);
+
     transform:skewX(-25deg);
+
     transition:0.7s;
 }
 
 .btn-eval:hover::before{
     left:130%;
 }
+/* SOLO CONTENEDOR DE BOTONES */
 
-/* ICONO */
-.btn-eval::after{
-    content:"🎮";
-    position:absolute;
-    right:15px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:20px;
-    animation:flotarIcono 1.5s infinite alternate;
+.curso-contenido a{
+    display:flex;
+    justify-content:center;
+    text-decoration:none;
+}
+/* BOTÓN */
+
+.btn-eval{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:15px auto;
+    padding:14px 26px;
+
+    background:linear-gradient(135deg,#22c55e,#15803d);
+    color:white;
+
+    border:none;
+    border-radius:14px;
+
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:0.5px;
+
+    cursor:pointer;
+
+    position:relative;
+    overflow:hidden;
+
+    box-shadow:0 8px 18px rgba(34,197,94,0.35);
+
+    transition:all 0.35s ease;
 }
 
+/* HOVER */
+
+.btn-eval:hover{
+    transform:translateY(-4px) scale(1.03);
+
+    box-shadow:0 14px 24px rgba(34,197,94,0.45);
+
+    background:linear-gradient(135deg,#16a34a,#166534);
+}
+
+/* CLICK */
+
+.btn-eval:active{
+    transform:scale(0.97);
+}
+
+/* BRILLO */
+
+.btn-eval::before{
+    content:"";
+
+    position:absolute;
+    top:0;
+    left:-120%;
+
+    width:70%;
+    height:100%;
+
+    background:rgba(255,255,255,0.28);
+
+    transform:skewX(-25deg);
+
+    transition:0.7s;
+}
+
+.btn-eval:hover::before{
+    left:130%;
+}
 /* ================= BOTÓN AZUL ================= */
 
 .btn-azul{
@@ -200,10 +252,6 @@ iframe{
     iframe{
         height:220px;
     }
-}
-/*Para quitar subrayado*/
-a{
-    text-decoration: none;
 }
 
 /* ================= CONTENEDOR BOTONES AUDIO ================= */
@@ -343,4 +391,82 @@ a{
 .link-historia:hover{
     color:#1d4ed8;
     letter-spacing:0.5px;
+}
+
+
+/* ================= VIDEO YOUTUBE ================= */
+
+.video-container{
+    position: relative;
+    width: 100%;
+    max-width: 750px;
+    margin: 25px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #000;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.30);
+
+    /* Relación automática 16:9 */
+    padding-bottom: 56.25%;
+    height: 0;
+
+}
+
+/* ================= TARJETA ================= */
+.card{
+    width:100%;
+    max-width:1100px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    border-radius:35px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.30);
+    border:1px solid rgba(255,255,255,.08);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+
+/* Hover solo computadoras */
+
+@media (hover:hover){
+
+.video-container:hover{
+    transform: scale(1.01);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+}
+
+.video-container iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+.video-container{
+    border-radius: 15px;
+    margin: 15px auto;
+}
+
+}
+
+/* Hover tarjetas */
+
+@media (hover:hover){
+
+.card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0,0,0,.35);
+}
+
 }
