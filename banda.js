@@ -100,7 +100,19 @@ if (instrumentName) instrumentName.textContent = bandaInfo.instrumento;
 if (codigoName) codigoName.textContent = bandaInfo.codigo;
 
 }
+//fecha para ensayos
+function formatearFecha(fecha) {
 
+    if (!fecha) return "";
+
+    const f = new Date(fecha);
+
+    const dia = String(f.getDate()).padStart(2, "0");
+    const mes = String(f.getMonth() + 1).padStart(2, "0");
+    const anio = f.getFullYear();
+
+    return `${dia}-${mes}-${anio}`;
+}
 // ===============================
 // CARGAR ENSAYOS Y PROMEDIO
 // ===============================
@@ -119,7 +131,7 @@ function cargarEnsayos(estudiante) {
     ensayos.forEach(e => {
         const fila = document.createElement("tr");
 
-        const puntaje = obtenerPuntaje(e.asistencia);
+        const puntaje = e.asistencia ? obtenerPuntaje(e.asistencia) : "";
 
         if (puntaje < 51) {
             fila.classList.add("reprobado");
@@ -129,7 +141,7 @@ function cargarEnsayos(estudiante) {
 
         fila.innerHTML = `
             <td>${e.actividad}</td>
-            <td>${e.dia}</td>
+            <td>${formatearFecha(e.dia)}</td>
             <td>${e.asistencia}</td>
             <td><span class="puntaje">${puntaje}</span></td>
             <td>${e.observacion || ""}</td>
@@ -144,7 +156,9 @@ function cargarEnsayos(estudiante) {
     // ===============================
     // VALIDAR SI HAY DATOS REALES
     // ===============================
-    const ensayosValidos = ensayos.filter(e => obtenerPuntaje(e.asistencia) > 0);
+    const ensayosValidos = ensayos.filter(
+    e => e.asistencia && e.asistencia.trim() !== ""
+    );
 
     if (ensayosValidos.length === 0) {
         const filaMensaje = document.createElement("tr");
