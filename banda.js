@@ -10,34 +10,16 @@ function obtenerPuntaje(asistencia) {
         default: return 0;
     }
 }
-
 // ===============================
-// DATOS DE ENSAYOS POR ESTUDIANTE
+// API DE GOOGLE SHEETS
 // ===============================
-const bandaData = {
-    "12735760": {
-        instrumento: "Tambor (Redoble)",
-        codigo: "TAM-10",
-        ensayos: [
-            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" },
-            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" },
-            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" },
-            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" }
-        ]
-    },
-    "1234567": {
-        instrumento: "Ninguno",
-        codigo: "TPT-03",
-        ensayos: [
-            { actividad: "Ensayo", dia: "Fecha", asistencia: "", observacion: "" }
-        ]
-    }
-};
+const API_BANDA = "https://script.google.com/macros/s/AKfycby-P00UHVTTnfiYdRcCsvVAiHd74wk19NByVbKg7xF_umbN2tldO6Sfni-vYSg838FZ/exec";
 
 // ===============================
 // INICIO AL CARGAR PÁGINA
 // ===============================
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
+
     const estudiante = JSON.parse(localStorage.getItem("estudiante"));
 
     if (!estudiante) {
@@ -46,45 +28,79 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    mostrarPerfil(estudiante);
-    cargarEnsayos(estudiante);
+    try {
+        const url = API_BANDA + "?ci=" + estudiante.ci;
+        const respuesta = await fetch(url);
+        const texto = await respuesta.text();
+        console.log("RESPUESTA REAL:", texto);
+        let datos;
+        try {
+            datos = JSON.parse(texto);
+        } catch (e) {
+            console.error("NO ES JSON:", texto);
+            alert("El servidor no devolvió JSON válido");
+            console.log(texto);
+            return;
+        }
+    // ===============================
+    // Para mostrar mensaje si no forma en la Banda
+    // ===============================
+    if (!datos.existe) {
+
+        estudiante.banda = {
+            curso: "",
+            instrumento: "",
+            codigo: "",
+            ensayos: []
+        };
+
+        mostrarPerfil(estudiante);
+        cargarEnsayos(estudiante);
+        return;
+    }
+        estudiante.banda = datos;
+        mostrarPerfil(estudiante);
+        cargarEnsayos(estudiante);
+    } catch (error) {
+    console.error("ERROR REAL:", error);
+    alert("No fue posible conectar con Google Sheets."); 
+}
+
     initDropdown();
+
     initCompromiso();
+
 });
 
 // ===============================
 // MOSTRAR PERFIL
 // ===============================
 function mostrarPerfil(estudiante) {
-    const studentName = document.getElementById("student-name");
-    const nombreCompletoEl = document.getElementById("nombreCompleto");
-    const courseName = document.getElementById("course-name");
 
-    const instrumentName = document.getElementById("instrument-name");
-    const codigoName = document.getElementById("codigo-name");
+const bandaInfo = estudiante.banda; // 👈 PRIMERO
 
-    // ✅ Nombre completo correcto
-    const nombreCompleto = estudiante.nombre + " " + estudiante.apellido;
+const studentName = document.getElementById("student-name");
+const nombreCompletoEl = document.getElementById("nombreCompleto");
+const courseName = document.getElementById("course-name");
+const instrumentName = document.getElementById("instrument-name");
+const codigoName = document.getElementById("codigo-name");
 
-    // ✅ Mostrar hasta 2 nombres
-    const nombres = (estudiante.nombre || "").split(" ");
-    const nombreMostrar = nombres.slice(0, 2).join(" ");
+// nombre
+const nombreCompleto = estudiante.nombre + " " + estudiante.apellido;
 
-    // HEADER (botón)
-    if (studentName) studentName.textContent = nombreMostrar;
+const nombres = (estudiante.nombre || "").split(" ");
+const nombreMostrar = nombres.slice(0, 2).join(" ");
 
-    // PERFIL COMPLETO
-    if (nombreCompletoEl) nombreCompletoEl.textContent = nombreCompleto;
+if (studentName) studentName.textContent = nombreMostrar;
+if (nombreCompletoEl) nombreCompletoEl.textContent = nombreCompleto;
 
-    // CURSO
-    if (courseName) courseName.textContent = estudiante.curso;
+// 👇 AHORA SÍ
+if (courseName) courseName.textContent = bandaInfo.curso;
+if (instrumentName) instrumentName.textContent = bandaInfo.instrumento;
+if (codigoName) codigoName.textContent = bandaInfo.codigo;
 
-    // DATOS DE BANDA
-    const bandaInfo = bandaData[estudiante.ci] || {};
-
-    if (instrumentName) instrumentName.textContent = bandaInfo.instrumento || "—";
-    if (codigoName) codigoName.textContent = bandaInfo.codigo || "—";
 }
+
 // ===============================
 // CARGAR ENSAYOS Y PROMEDIO
 // ===============================
@@ -94,7 +110,8 @@ function cargarEnsayos(estudiante) {
 
     tbody.innerHTML = "";
 
-    const ensayos = (bandaData[estudiante.ci] || {}).ensayos || [];
+
+    const ensayos = estudiante.banda?.ensayos || [];
 
     let total = 0;
     let count = 0;
@@ -132,7 +149,7 @@ function cargarEnsayos(estudiante) {
     if (ensayosValidos.length === 0) {
         const filaMensaje = document.createElement("tr");
         filaMensaje.innerHTML = `
-            <td colspan="5" style="text-align:center; font-weight:bold;">
+            <td colspan="5" style="text-align:center; font-weight:bold; color:red;">
                 USTED NO ES PARTE DE LA BANDA DE MÚSICA
             </td>
         `;
