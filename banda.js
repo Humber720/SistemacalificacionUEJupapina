@@ -13,7 +13,7 @@ function obtenerPuntaje(asistencia) {
 // ===============================
 // API DE GOOGLE SHEETS
 // ===============================
-const API_BANDA = "https://script.google.com/macros/s/AKfycby-P00UHVTTnfiYdRcCsvVAiHd74wk19NByVbKg7xF_umbN2tldO6Sfni-vYSg838FZ/exec";
+const API_BANDA = "https://script.google.com/macros/s/AKfycbxxynNkb9zvet9uMLzWn3WC0uWFpfiWS9WKvIUv-94Q6Uk6HQ1uQJs6yPkIwzYl1pUG/exec";
 
 // ===============================
 // INICIO AL CARGAR PÁGINA
