@@ -375,5 +375,203 @@
   }
 }
 
+/*======================TABLA DE ASISTENCIA==============*/
+/* =========================================================
+   TABLA DE ASISTENCIA
+   IMPORTANTE:
+   Estos estilos SOLO afectan a la tabla que contiene
+   #asistencia-table y NO modifican Calificaciones.
+   ========================================================= */
 
+
+/* ========================= */
+/* CONTENEDOR PRINCIPAL */
+/* ========================= */
+
+.container:has(#asistencia-table) {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ffffff, #f0f9ff);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    animation: fadeInAsistencia 0.6s ease;
+}
+
+
+/* ========================= */
+/* ANIMACIÓN SUAVE */
+/* ========================= */
+
+@keyframes fadeInAsistencia {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================= */
+/* TABLA */
+/* ========================= */
+
+.grades-table:has(#asistencia-table) {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+}
+
+
+/* ========================= */
+/* TÍTULO */
+/* ========================= */
+
+.grades-table:has(#asistencia-table) caption {
+    background: linear-gradient(135deg, #f59e0b, #f97316);
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px 10px 0 0;
+}
+
+
+/* ========================= */
+/* ENCABEZADO */
+/* ========================= */
+
+.grades-table:has(#asistencia-table) th {
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    font-size: 14px;
+}
+
+
+/* ========================= */
+/* CELDAS */
+/* ========================= */
+
+.grades-table:has(#asistencia-table) td {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* ========================= */
+/* FILAS COLOREADAS */
+/* ========================= */
+
+.grades-table:has(#asistencia-table) tr:nth-child(even) {
+    background: #f1f5f9;
+}
+
+.grades-table:has(#asistencia-table) tr:nth-child(odd) {
+    background: #e0f2fe;
+}
+
+
+/* ========================= */
+/* EFECTO AL PASAR EL MOUSE */
+/* ========================= */
+
+.grades-table:has(#asistencia-table) tbody tr:hover {
+    background: #fde68a;
+    transform: scale(1.01);
+    transition: 0.2s;
+}
+
+
+/* =========================================================
+   COLORES DE CADA COLUMNA
+   ========================================================= */
+
+
+/* 🔴 FALTAS */
+.grades-table:has(#asistencia-table) td:nth-child(2) {
+    color: #ef4444;
+    font-weight: bold;
+}
+
+
+/* 🟠 ATRASOS */
+.grades-table:has(#asistencia-table) td:nth-child(3) {
+    color: #f59e0b;
+    font-weight: bold;
+}
+
+
+/* 🟢 PERMISOS */
+.grades-table:has(#asistencia-table) td:nth-child(4) {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+
+/* 🔵 ASISTENCIAS */
+.grades-table:has(#asistencia-table) td:nth-child(5) {
+    color: #2563eb;
+    font-weight: bold;
+}
+
+
+/* ========================= */
+/* TOTAL EN NEGRITA */
+/* ========================= */
+
+/*
+   La última fila corresponde al TOTAL.
+   Se pone en negrita sin cambiar sus colores.
+*/
+
+.grades-table:has(#asistencia-table) tr:last-child {
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET / CELULAR
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .container:has(#asistencia-table) {
+        padding: 15px;
+    }
+
+    .grades-table:has(#asistencia-table) th,
+    .grades-table:has(#asistencia-table) td {
+        font-size: 12px;
+        padding: 8px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - CELULAR PEQUEÑO
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .container:has(#asistencia-table) {
+        padding: 10px;
+    }
+
+    .grades-table:has(#asistencia-table) caption {
+        font-size: 14px;
+    }
+
+    .grades-table:has(#asistencia-table) th,
+    .grades-table:has(#asistencia-table) td {
+        font-size: 11px;
+        padding: 7px 4px;
+    }
+}
 
