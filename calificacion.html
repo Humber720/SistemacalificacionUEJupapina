@@ -101,6 +101,27 @@
       </table>
     </div>
   </div>
+
+
+  <!-- Tabla de Asisitencia -->
+  <div class="container">
+    <table class="grades-table">
+      <caption><b>RESUMEN DE ASISTENCIA - CLASE DE MUSICA</b></caption>
+      <thead>
+        <tr>
+          <th>Trimestre</th>
+          <th>Faltas</th>
+          <th>Atrasos</th>
+          <th>Permisos</th> <!--Licencias-->
+          <th>Asistencias</th><!--Presentes-->
+        </tr>
+      </thead>
+      <tbody id="asistencia-table">
+        <!-- Las filas se insertan desde asistencia.js -->
+      </tbody>
+    </table>
+  </div>
+
     <!-- Contenido principal entrevista -->
       <div class="container">
           <!--INFORME DE ENTREVISTA PEDAGÓGICA -->
@@ -125,6 +146,7 @@
         <center><button id="btnNota">Ver Nota de Examen</button></center>
   
       </div>
+
         <!-- MODAL NOTA EXAMEN -->
   <div id="modalNota" class="modal">
     <div class="modal-contenido">
@@ -136,6 +158,7 @@
 
 <!-- Scripts -->
     <script src="calificacion.js"></script>
+    <script src="asistencia.js"></script>
     <script src="examen.js"></script>
 </body>
 </html>
