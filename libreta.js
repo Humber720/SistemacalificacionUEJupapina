@@ -1,551 +1,892 @@
-// ===============================
-// LIBRETA.JS - MOSTRAR NOTAS POR TRIMESTRE
-// ===============================
+// ======================================================
+// URL DEL NUEVO GOOGLE APPS SCRIPT
+// ======================================================
 
-// ===============================
+const URL_LIBRETAS =
+    "https://script.google.com/macros/s/AKfycbyH-t_plJhfyy1sSnRAwdWT7zJ2BZ8MeQUN1oTJDT1boEl3xkWuSAazNNdC5k7sSa6u/exec";
+
+
+// ======================================================
 // FUNCIÓN ESTADO
-// ===============================
+// ======================================================
+
 function obtenerEstado(calificacion) {
-    return calificacion >= 51 ? "APROBADO(A)" : "REPROBADO(A)";
+
+    const nota = Number(calificacion);
+
+    return nota >= 51
+        ? "APROBADO(A)"
+        : "REPROBADO(A)";
 }
 
-// ===============================
+
+// ======================================================
 // FUNCIÓN AUTOMÁTICA DESCRIPCIÓN
-// ===============================
+// ======================================================
+
 function generarDescripcion(calificaciones) {
+
     let reprobadas = 0;
 
+
     Object.values(calificaciones).forEach(lista => {
+
         lista.forEach(nota => {
-            if (nota.calificacion !== "" && nota.calificacion < 51) {
+
+            const calificacion =
+                Number(nota.calificacion);
+
+
+            if (
+                nota.calificacion !== "" &&
+                !isNaN(calificacion) &&
+                calificacion < 51
+            ) {
+
                 reprobadas++;
+
             }
+
         });
+
     });
+
+
+    // -----------------------------------------------
+    // NINGUNA REPROBADA
+    // -----------------------------------------------
 
     if (reprobadas === 0) {
+
         return "Usted no tiene áreas reprobadas";
-    } else if (reprobadas === 1) {
+
+    }
+
+
+    // -----------------------------------------------
+    // UNA REPROBADA
+    // -----------------------------------------------
+
+    if (reprobadas === 1) {
+
         return "Usted tiene 1 área reprobada";
-    } else {
-        return `Usted tiene ${reprobadas} áreas reprobadas`;
+
     }
+
+
+    // -----------------------------------------------
+    // VARIAS REPROBADAS
+    // -----------------------------------------------
+
+    return `Usted tiene ${reprobadas} áreas reprobadas`;
+
 }
 
-// ===============================
-// BASE DE DATOS
-// ===============================
-const estudiantesNotas = {
-// ===============================
-// 3ro de Secundaria
-// ===============================
-    "15781711": { // ALI MAMANI ASCENCIO
-        calificaciones: {
-            "1er Trim.": [
-                { area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" }
-            ],
-            "2do Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "3er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ]
-        }
-    },
-    "12454396": { // CALATAYUD YUJRA BRENDA
-        calificaciones: {
-            "1er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "2do Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "3er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ]
-        }
-    },
-    "16906396": { // CHINO COYO GENESIS
-        calificaciones: {
-            "1er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "2do Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "3er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ]
-        }
-    },
-    "14650991": { // CHOQUE APAZA ALEX WILDER
-        calificaciones: {
-            "1er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "2do Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "3er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ]
-        }
-    },
-    "12863798": { // CORINA QUISPE JUAN FERNANDO
-        calificaciones: {
-            "1er Trim.": [
-                { area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
-                { area: "ARTES PLÁSTICAS Y VISUALES", calificacion: "47", observacion: "" },
-                { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
-                { area: "TÉCNICA TECNOLOGICA ESPECIALIZADA", calificacion: "40", observacion: "" },
-                { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "35", observacion: "" },
-                { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
-                { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
-                { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" },
-                { area: "VALORES, ESPIRITUALIDADES Y RELIGIONES", calificacion: "48", observacion: "" }
-            ],
-            "2do Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "3er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ]
-        }
-    },
-    "12894836": { // CRISTIAN ELVIS CUTIPA ESPEJO
-        calificaciones: {
-            "1er Trim.": [
-                { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "48", observacion: "" }
-            ],
-            "2do Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ],
-            "3er Trim.": [
-                { area: "", calificacion: "", observacion: "" }
-            ]
-        }
-    },
 
-    "12735760": { // KEYLA ALEIDIS ESPEJO ALANOCA
-        calificaciones: {
-            "1er Trim.": [{ area: "MUSICA", calificacion: "45", observacion: "" },
-                { area: "EFI", calificacion: "45", observacion: "" },
-                { area: "RELIGIÓN", calificacion: "45", observacion: "" }
-            ],
+// ======================================================
+// MENSAJE CARGANDO
+// ======================================================
 
-            "2do Trim.": [{ area: "LENGUAJE", calificacion: "50", observacion: "" }],
-            "3er Trim.": [{ area: "COMPUTACIÓN", calificacion: "50", observacion: "" }]
-        }
-    },
+function mostrarCargando() {
 
-    "14007065": { // JASIEL NOEMI FLORES HUMEREZ
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
+    // -----------------------------------------------
+    // DESCRIPCIÓN
+    // -----------------------------------------------
 
-    "14481933": { // MIGUEL ANGEL FLORES VARGAS
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
+    // -----------------------------------------------
+    // TABLAS
+    // -----------------------------------------------
 
-    "15150735": { // GABRIEL KEVIN GARCIA GARCIA
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
+    ["1", "2", "3"].forEach(num => {
 
-    "15377451": { // RICARDO GONZALES ROSAS
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
+        const tbody =
+            document.getElementById(
+                `grades-trim-${num}`
+            );
 
-    "15467033": { // FABRICIO DANIEL GUARACHI LIMACHI
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
 
-    "13118786": { // ZOEY SUMAYA GUARACHI MARTINEZ
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "17981853": { // FRANK REINALDO IRAIPI MORALES
-        calificaciones: {
-            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
-                    { area: "EDUCACIÓN MUSICAL", calificacion: "46", observacion: "" },
-                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
-                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" },
-                    { area: "VALORES, ESPIRITUALIDADES Y RELIGIONES", calificacion: "46", observacion: "" }
-            ],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-    "14678752": { // KENAPP FLORES JOSE DAVID
-        calificaciones: {
-            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
-                    { area: "LENGUA EXTRANJERA", calificacion: "46", observacion: "" },
-                    { area: "CIENCIAS SOCIALES", calificacion: "43", observacion: "" },
-                    { area: "EDUCACIÓN MUSICAL", calificacion: "41", observacion: "" },
-                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "40", observacion: "" },
-                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
-                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" },
-                    { area: "VALORES, ESPIRITUALIDADES Y RELIGIONES", calificacion: "47", observacion: "" }
-            ],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-    "13119655": { // KEVIN PATRICIO LUNA MERLO
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "13053567": { // JHENNY YOSELIN MAMANI HUANCA
-        calificaciones: {
-            "1er Trim.": [{ area: "MATEMÁTICA", calificacion: "42", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "15069633": { // JUAN RODRIGO MAYTA MAMANI
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "16188827": { // JULIAN NEYMAR POMA QUISPE
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "16575605": { // GUADALUPE TATIANA QUISPE CARRILLO
-        calificaciones: {
-            "1er Trim.": [{ area: "ARTES PLÁSTICAS Y VISUALES", calificacion: "49", observacion: "" },
-                { area: "MATEMÁTICA", calificacion: "42", observacion: "" },
-                { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" }
-            ],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "14041113": { // DRAKE NOLAND QUISPE PAUCARA
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "13491581": { // LEIDY FLORA QUISPE QUISPE
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "15432789": { // KEVIN RAMIREZ VARGAS
-        calificaciones: {
-            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
-                    { area: "LENGUA EXTRANJERA", calificacion: "48", observacion: "" },
-                    { area: "CIENCIAS SOCIALES", calificacion: "43", observacion: "" },
-                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "43", observacion: "" },
-                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
-                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" }
-            ],     
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "15466974": { // EMILI CLARA SANCHEZ PAUCARA
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "15453680": { // AARON JUSTINIANO TAPIA SEJAS
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "14007170": { // ANGELA MASHIEL TICONA LIMA
-        calificaciones: {
-            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
-                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "40", observacion: "" },
-                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "35", observacion: "" },
-                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" }
-            ],    
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "15055926": { // VICTOR FERNANDO VALVERDE SANCHEZ
-        calificaciones: {
-            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
-                    { area: "CIENCIAS SOCIALES", calificacion: "42", observacion: "" },
-                    { area: "EDUCACIÓN MUSICAL", calificacion: "46", observacion: "" },
-                    { area: "ARTES PLÁSTICAS Y VISUALES", calificacion: "49", observacion: "" },
-                    { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
-                    { area: "CIENCIA NATURALES: BIOLOGÍA - GEOGRAFÍA", calificacion: "40", observacion: "" },
-                    { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "41", observacion: "" },
-                    { area: "CIENCIAS NATURALES: QUÍMICA", calificacion: "41", observacion: "" },
-                    { area: "COSMOVISIÓNES, FILOSFÍA Y SICOLOGÍA", calificacion: "40", observacion: "" },
-                    { area: "VALORES, ESPIRITUALIDADES Y RELIGIONES", calificacion: "46", observacion: "" }
-            ],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "13394025": { // DELIA YUJRA SIRPA
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "13393302": { // LESLIE MAYLI ZACARI PAUCARA
-        calificaciones: {
-            "1er Trim.": [{ area: "COMUNICACIÓN Y LENGUAJES: CASTELLANA Y ORIGINARIA", calificacion: "40", observacion: "" },
-                 { area: "MATEMÁTICA", calificacion: "35", observacion: "" },
-                  { area: "CIENCIAS NATURALES: FÍSICA", calificacion: "35", observacion: "" }
-            ],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-
-    "14107325": { // JOSE ANTONIO ZAMBRANA OMONTE
-        calificaciones: {
-            "1er Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "2do Trim.": [{ area: "", calificacion: "", observacion: "" }],
-            "3er Trim.": [{ area: "", calificacion: "", observacion: "" }]
-        }
-    },
-    // 👉 puedes seguir agregando todos igual...
-};
-
-// ===============================
-// INICIO
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-    const data = JSON.parse(localStorage.getItem("estudiante"));
-
-    if (!data) {
-        window.location.href = "lateral.html";
-        return;
-    }
-
-    const CI = data.ci;
-    const estudiante = estudiantesNotas[CI];
-
-    // ===============================
-    // VALIDAR CURSO
-    // ===============================
-    if (data.curso !== "3ro de Secundaria") {
-
-        mostrarPerfil(data, {});
-
-        ["1","2","3"].forEach(num => {
-            const tbody = document.getElementById(`grades-trim-${num}`);
-            if (!tbody) return;
-
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="4" style="text-align:center; font-weight:bold; color:red;">
-                        SOLO PARA 3ro de Secundaria (Asesor Prof. Humberto)
-                    </td>
-                </tr>
-            `;
-        });
-
-        return;
-    }
-
-    // ===============================
-    // VALIDAR ESTUDIANTE
-    // ===============================
-    if (!estudiante) {
-        alert("Estudiante no encontrado");
-        return;
-    }
-
-    mostrarPerfil(data, estudiante);
-    cargarNotas(estudiante);
-});
-
-// ===============================
-// MOSTRAR PERFIL
-// ===============================
-function mostrarPerfil(data, estudianteNotas) {
-    const nombreCompleto = data.nombre + " " + data.apellido;
-
-    // HEADER
-    const studentName = document.getElementById("student-name");
-    if (studentName) studentName.textContent = data.nombre;
-
-    const nombreSpan = document.getElementById("nombreCompleto");
-    if (nombreSpan) nombreSpan.textContent = nombreCompleto;
-
-    const cursoHeader = document.getElementById("course-name");
-    if (cursoHeader) cursoHeader.textContent = data.curso;
-
-    // INFO
-    const studentNameMain = document.querySelector(".student-info #student-name");
-    if (studentNameMain) studentNameMain.textContent = nombreCompleto;
-
-    const courseNameMain = document.querySelector(".student-info #course-name");
-    if (courseNameMain) courseNameMain.textContent = data.curso;
-
-    const descripcion = document.querySelector(".student-info #descripcion-name");
-
-    if (descripcion && estudianteNotas.calificaciones) {
-        descripcion.textContent = generarDescripcion(estudianteNotas.calificaciones);
-    }
-}
-
-// ===============================
-// CARGAR NOTAS
-// ===============================
-function cargarNotas(estudianteNotas) {
-    const trimestres = ["1er Trim.", "2do Trim.", "3er Trim."];
-
-    trimestres.forEach((trim, index) => {
-        const tbody = document.getElementById(`grades-trim-${index+1}`);
-        if (!tbody) return;
-
-        tbody.innerHTML = "";
-
-        const lista = estudianteNotas.calificaciones[trim] || [];
-
-        // ✅ SOLO NOTAS VÁLIDAS
-        const notasValidas = lista.filter(n => n.calificacion !== "");
-
-        // ✅ SOLO REPROBADOS
-        const reprobados = notasValidas.filter(n => n.calificacion < 51);
-
-        // 🔴 SI NO HAY DATOS
-        if (notasValidas.length === 0) {
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="4" style="text-align:center;">
-                        SIN REGISTROS
-                    </td>
-                </tr>
-            `;
+        if (!tbody) {
             return;
         }
 
-        // 🟢 SI NO HAY REPROBADOS
-        if (reprobados.length === 0) {
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="4" style="text-align:center; font-weight:bold; color:green;">
-                        USTED NO TIENE ÁREAS REPROBADAS
-                    </td>
-                </tr>
-            `;
-            return;
-        }
 
-        // 🔴 MOSTRAR SOLO REPROBADOS
-        reprobados.forEach(nota => {
-            const fila = document.createElement("tr");
-
-            fila.innerHTML = `
-                <td>${nota.area}</td>
-                <td>${nota.calificacion}</td>
-                <td style="color:red; font-weight:bold;">
-                    REPROBADO(A)
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="4"
+                    style="
+                        text-align:center;
+                        font-weight:bold;
+                        padding:18px;
+                        color:#2563eb;
+                    ">
+                    ⏳ Cargando materias reprobadas...
                 </td>
-                <td>${nota.observacion || "-"}</td>
-            `;
+            </tr>
+        `;
 
-            tbody.appendChild(fila);
-        });
     });
+
 }
 
-// ===============================
-// PDF
-// ===============================
-function verLibreta() {
-    const estudiante = JSON.parse(localStorage.getItem("estudiante"));
 
-    if (!estudiante) {
-        alert("No hay sesión activa");
-        return;
+// ======================================================
+// INICIO
+// ======================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        // -------------------------------------------
+        // OBTENER ESTUDIANTE
+        // -------------------------------------------
+
+        const data =
+            JSON.parse(
+                localStorage.getItem("estudiante")
+            );
+
+
+        // -------------------------------------------
+        // VALIDAR SESIÓN
+        // -------------------------------------------
+
+        if (!data) {
+
+            window.location.href =
+                "lateral.html";
+
+            return;
+
+        }
+
+
+        // -------------------------------------------
+        // CI
+        // -------------------------------------------
+
+        const CI =
+            String(data.ci || "").trim();
+
+
+        if (!CI) {
+
+            alert(
+                "No se encontró el CI del estudiante."
+            );
+
+            return;
+
+        }
+
+
+        // -------------------------------------------
+        // MOSTRAR DATOS BÁSICOS
+        // -------------------------------------------
+
+        mostrarPerfilBasico(data);
+
+
+        // -------------------------------------------
+        // MOSTRAR CARGANDO
+        // -------------------------------------------
+
+        mostrarCargando();
+
+
+        // -------------------------------------------
+        // CONSULTAR GOOGLE SHEETS
+        // -------------------------------------------
+
+        try {
+
+            const url =
+                `${URL_LIBRETAS}?ci=${encodeURIComponent(CI)}`;
+
+
+            console.log(
+                "Consultando Libretas:",
+                url
+            );
+
+
+            const respuesta =
+                await fetch(url);
+
+
+            const resultado =
+                await respuesta.json();
+
+
+            console.log(
+                "Respuesta Libretas:",
+                resultado
+            );
+
+
+            // ---------------------------------------
+            // ERROR DEL APPS SCRIPT
+            // ---------------------------------------
+
+            if (resultado.error) {
+
+                console.error(
+                    "Error Apps Script:",
+                    resultado.mensaje
+                );
+
+
+                mostrarTablasSinDatos(
+                    resultado.mensaje ||
+                    "No se pudieron cargar las calificaciones."
+                );
+
+
+                return;
+
+            }
+
+
+            // ---------------------------------------
+            // ESTUDIANTE NO ENCONTRADO
+            // ---------------------------------------
+
+            if (!resultado.existe) {
+
+                mostrarTablasSinDatos(
+                    "ESTUDIANTE NO ENCONTRADO"
+                );
+
+
+                const descripcion =
+                    document.querySelector(
+                        ".student-info #descripcion-name"
+                    );
+
+
+                if (descripcion) {
+
+                    descripcion.textContent =
+                        "No se encontraron datos del estudiante.";
+
+                }
+
+
+                return;
+
+            }
+
+
+            // ---------------------------------------
+            // OBTENER INFORMACIÓN
+            // ---------------------------------------
+
+            const estudiante =
+                resultado.estudiante || {};
+
+
+            const calificaciones =
+                resultado.calificaciones || {
+
+
+                    "1er Trim.": [],
+
+                    "2do Trim.": [],
+
+                    "3er Trim.": []
+
+                };
+
+
+            // ---------------------------------------
+            // MOSTRAR PERFIL
+            // ---------------------------------------
+
+            mostrarPerfil(
+                data,
+                {
+                    calificaciones:
+                        calificaciones
+                },
+                estudiante
+            );
+
+
+            // ---------------------------------------
+            // CARGAR NOTAS
+            // ---------------------------------------
+
+            cargarNotas({
+
+                calificaciones:
+                    calificaciones
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Error consultando Libretas:",
+                error
+            );
+
+
+            mostrarTablasSinDatos(
+                "No se pudieron cargar los datos."
+            );
+
+
+            const descripcion =
+                document.querySelector(
+                    ".student-info #descripcion-name"
+                );
+
+
+            if (descripcion) {
+
+                descripcion.textContent =
+                    "No se pudieron cargar las materias reprobadas.";
+
+            }
+
+        }
+
+    }
+);
+
+
+// ======================================================
+// MOSTRAR PERFIL BÁSICO
+// ======================================================
+
+function mostrarPerfilBasico(data) {
+
+    const nombreCompleto =
+        `${data.nombre || ""} ${data.apellido || ""}`.trim();
+
+
+    // -----------------------------------------------
+    // HEADER
+    // -----------------------------------------------
+
+    const studentName =
+        document.getElementById(
+            "student-name"
+        );
+
+
+    if (studentName) {
+
+        studentName.textContent =
+            data.nombre || "";
+
     }
 
-    document.getElementById("visorLibreta").src = `libretas/${estudiante.ci}.pdf`;
+
+    const nombreSpan =
+        document.getElementById(
+            "nombreCompleto"
+        );
+
+
+    if (nombreSpan) {
+
+        nombreSpan.textContent =
+            nombreCompleto;
+
+    }
+
+
+    const cursoHeader =
+        document.getElementById(
+            "course-name"
+        );
+
+
+    if (cursoHeader) {
+
+        cursoHeader.textContent =
+            data.curso || "";
+
+    }
+
+
+    // -----------------------------------------------
+    // INFORMACIÓN PRINCIPAL
+    // -----------------------------------------------
+
+    const studentNameMain =
+        document.querySelector(
+            ".student-info #student-name"
+        );
+
+
+    if (studentNameMain) {
+
+studentName.textContent =
+    data.nombre || "";
+
+    }
+
+
+    const courseNameMain =
+        document.querySelector(
+            ".student-info #course-name"
+        );
+
+
+    if (courseNameMain) {
+
+        courseNameMain.textContent =
+            data.curso || "";
+
+    }
+
 }
+
+// ======================================================
+// MOSTRAR PERFIL
+// ======================================================
+
+function mostrarPerfil(
+    data,
+    estudianteNotas,
+    estudianteSheets
+) {
+
+    // ==================================================
+    // EL NOMBRE SIEMPRE VIENE DE LOCALSTORAGE
+    // NO DE GOOGLE SHEETS
+    // ==================================================
+
+    const nombreCompleto =
+        `${data.nombre || ""} ${data.apellido || ""}`.trim();
+
+
+    // ==================================================
+    // EL CURSO TAMBIÉN VIENE DE LOCALSTORAGE
+    // ==================================================
+
+    const curso =
+        data.curso || "";
+
+
+    // ==================================================
+    // HEADER SUPERIOR DERECHO
+    // EJEMPLO: ASCENCIO
+    // ==================================================
+
+    const studentName =
+        document.getElementById(
+            "student-name"
+        );
+
+
+    if (studentName) {
+
+        studentName.textContent =
+            data.nombre || "";
+
+    }
+
+
+    // ==================================================
+    // NOMBRE COMPLETO
+    // ==================================================
+
+    const nombreSpan =
+        document.getElementById(
+            "nombreCompleto"
+        );
+
+
+    if (nombreSpan) {
+
+        nombreSpan.textContent =
+            nombreCompleto;
+
+    }
+
+
+    // ==================================================
+    // CURSO
+    // ==================================================
+
+    const cursoHeader =
+        document.getElementById(
+            "course-name"
+        );
+
+
+    if (cursoHeader) {
+
+        cursoHeader.textContent =
+            curso;
+
+    }
+
+
+    // ==================================================
+    // INFORMACIÓN PRINCIPAL
+    // ==================================================
+
+    const studentNameMain =
+        document.querySelector(
+            ".student-info #student-name"
+        );
+
+
+    if (studentNameMain) {
+
+        studentNameMain.textContent =
+            nombreCompleto;
+
+    }
+
+
+    const courseNameMain =
+        document.querySelector(
+            ".student-info #course-name"
+        );
+
+
+    if (courseNameMain) {
+
+        courseNameMain.textContent =
+            curso;
+
+    }
+
+
+    // ==================================================
+    // DESCRIPCIÓN
+    // ESTA SÍ SE CALCULA CON GOOGLE SHEETS
+    // ==================================================
+
+    const descripcion =
+        document.querySelector(
+            ".student-info #descripcion-name"
+        );
+
+
+    if (
+        descripcion &&
+        estudianteNotas &&
+        estudianteNotas.calificaciones
+    ) {
+
+        descripcion.textContent =
+            generarDescripcion(
+                estudianteNotas.calificaciones
+            );
+
+    }
+
+}
+
+
+// ======================================================
+// CARGAR NOTAS
+// ======================================================
+
+function cargarNotas(estudianteNotas) {
+
+    const trimestres = [
+
+        "1er Trim.",
+        "2do Trim.",
+        "3er Trim."
+
+    ];
+
+
+    trimestres.forEach(
+        (trim, index) => {
+
+            const tbody =
+                document.getElementById(
+                    `grades-trim-${index + 1}`
+                );
+
+
+            if (!tbody) {
+                return;
+            }
+
+
+            tbody.innerHTML = "";
+
+
+            // ---------------------------------------
+            // OBTENER LISTA
+            // ---------------------------------------
+
+            const lista =
+                estudianteNotas
+                    .calificaciones[trim] || [];
+
+
+            // ---------------------------------------
+            // NOTAS VÁLIDAS
+            // ---------------------------------------
+
+            const notasValidas =
+                lista.filter(nota => {
+
+                    return (
+
+                        nota.calificacion !== "" &&
+
+                        !isNaN(
+                            Number(
+                                nota.calificacion
+                            )
+                        )
+
+                    );
+
+                });
+
+
+            // ---------------------------------------
+            // SIN REGISTROS
+            // ---------------------------------------
+
+            if (notasValidas.length === 0) {
+
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4"
+                            style="
+                                text-align:center;
+                            ">
+                            SIN REGISTROS
+                        </td>
+                    </tr>
+                `;
+
+                return;
+
+            }
+
+
+            // ---------------------------------------
+            // BUSCAR REPROBADOS
+            // ---------------------------------------
+
+            const reprobados =
+                notasValidas.filter(nota => {
+
+                    return Number(
+                        nota.calificacion
+                    ) < 51;
+
+                });
+
+
+            // ---------------------------------------
+            // NINGÚN REPROBADO
+            // ---------------------------------------
+
+            if (reprobados.length === 0) {
+
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="4"
+                            style="
+                                text-align:center;
+                                font-weight:bold;
+                                color:green;
+                            ">
+                            USTED NO TIENE ÁREAS REPROBADAS
+                        </td>
+                    </tr>
+                `;
+
+                return;
+
+            }
+
+
+            // ---------------------------------------
+            // MOSTRAR SOLO REPROBADOS
+            // ---------------------------------------
+
+            reprobados.forEach(nota => {
+
+                const fila =
+                    document.createElement("tr");
+
+
+                const calificacion =
+                    Number(
+                        nota.calificacion
+                    );
+
+
+                fila.innerHTML = `
+
+                    <td>
+                        ${nota.area || "-"}
+                    </td>
+
+                    <td>
+                        ${calificacion}
+                    </td>
+
+                    <td style="
+                        color:red;
+                        font-weight:bold;
+                    ">
+                        ${obtenerEstado(
+                            calificacion
+                        )}
+                    </td>
+
+                    <td>
+                        ${nota.observacion || "-"}
+                    </td>
+
+                `;
+
+
+                tbody.appendChild(fila);
+
+            });
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// MOSTRAR ERROR EN LAS TABLAS
+// ======================================================
+
+function mostrarTablasSinDatos(mensaje) {
+
+    ["1", "2", "3"].forEach(num => {
+
+        const tbody =
+            document.getElementById(
+                `grades-trim-${num}`
+            );
+
+
+        if (!tbody) {
+            return;
+        }
+
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="4"
+                    style="
+                        text-align:center;
+                        font-weight:bold;
+                    ">
+                    ${mensaje}
+                </td>
+            </tr>
+        `;
+
+    });
+
+}
+
+
+// ======================================================
+// PDF
+// ======================================================
+
+function verLibreta() {
+
+    const estudiante =
+        JSON.parse(
+            localStorage.getItem("estudiante")
+        );
+
+
+    if (!estudiante) {
+
+        alert(
+            "No hay sesión activa"
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "visorLibreta"
+    ).src =
+        `libretas/${estudiante.ci}.pdf`;
+
+}
+
+
+// ======================================================
+// DESCARGAR LIBRETA
+// ======================================================
 
 function descargarLibreta() {
-    const estudiante = JSON.parse(localStorage.getItem("estudiante"));
+
+    const estudiante =
+        JSON.parse(
+            localStorage.getItem("estudiante")
+        );
+
 
     if (!estudiante) {
-        alert("No hay sesión activa");
+
+        alert(
+            "No hay sesión activa"
+        );
+
         return;
+
     }
 
-    const link = document.createElement("a");
-    link.href = `libretas/${estudiante.ci}.pdf`;
-    link.download = `${estudiante.ci}.pdf`;
-    link.click();
-}
-// ===============================
-// CERRAR SESIÓN
-// ===============================
-function cerrarSesion() {
-    localStorage.removeItem("estudiante");
 
-    // 👇 marcar que cerró sesión
-    sessionStorage.setItem("logout", "true");
-   // 👇 IMPORTANTE: replace (no permite volver atrás)
-    window.location.replace("index.html");
+    const link =
+        document.createElement("a");
+
+
+    link.href =
+        `libretas/${estudiante.ci}.pdf`;
+
+
+    link.download =
+        `${estudiante.ci}.pdf`;
+
+
+    link.click();
+
+}
+
+
+// ======================================================
+// CERRAR SESIÓN
+// ======================================================
+
+function cerrarSesion() {
+
+    localStorage.removeItem(
+        "estudiante"
+    );
+
+
+    sessionStorage.setItem(
+        "logout",
+        "true"
+    );
+
+
+    window.location.replace(
+        "index.html"
+    );
+
 }
