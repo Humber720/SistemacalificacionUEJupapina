@@ -283,7 +283,7 @@ async function buscarCI() {
     if (datos.yaRespondio === true) {
 
       mensaje.textContent =
-        "⚠️ Este estudiante ya realizó la autoevaluación.";
+        "⚠️ Usted ya realizó la autoevaluación.";
 
       mensaje.style.color =
         "#e67e22";
