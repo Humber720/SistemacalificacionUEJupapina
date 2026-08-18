@@ -1353,7 +1353,7 @@ function generarPDF() {
     );
 
     doc.text(
-      "Nombre: " + nombre,
+      "Estudiante: " + nombre,
       14,
       67
     );
