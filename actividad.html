@@ -12,7 +12,9 @@
     <!-- CSS para la cabecera -->
     <link rel="stylesheet" href="cabecera.css" />
     <!-- CSS general de la página -->
+     <link rel="stylesheet" href="autoevaluacion.css" />
     <link rel="stylesheet" href="actividad.css" />
+
     <script src="menu.js"></script>
 </head>
 <body>
@@ -68,16 +70,106 @@
               Cerrar sesión
             </button>
           </div>
-
         </div>
       </div>
 
     </div>
   </header>
 
+<!-- =====================================================
+     SECCIÓN AUTOEVALUACIÓN
+===================================================== -->
+<section id="autoevaluacion" class="seccion">
+  <h2>📝 Autoevaluación</h2>
+  <div class="autoevaluacion-card">
+    <p>
+      Realiza tu autoevaluación correspondiente.
+    </p>
+    <p class="texto-ayuda">
+      Tu CI será identificado automáticamente.
+    </p>
+    <button
+      type="button"
+      class="btn-autoevaluacion"
+      onclick="abrirVentanaCI()">
+      📝 Ingresar a la Autoevaluación
+    </button>
+  </div>
+</section>
+<!-- =====================================================
+     VENTANA MODAL PARA CI
+===================================================== -->
+<div id="modalCI" class="modal-ci">
+  <div class="modal-ci-contenido">
+    <button
+      type="button"
+      class="cerrar-modal-ci"
+      onclick="cerrarVentanaCI()">
+      ✕
+    </button>
+    <div class="icono-ci">
+      👤
+    </div>
+    <h3>Ingresar a la Autoevaluación</h3>
+    <p>
+      Estudiante identificado automáticamente
+    </p>
+    <!-- =================================================
+         CI OBTENIDO DESDE menu.js
+    ================================================== -->
+    <label for="ciEstudiante">
+      Cédula de Identidad:
+    </label>
+    <input
+      type="text"
+      id="ciEstudiante"
+      readonly
+      style="
+        text-align:center;
+        font-weight:bold;
+        letter-spacing:1px;
+      "
+    >
+    <!-- =================================================
+         BOTÓN BUSCAR
+    ================================================== -->
+    <button
+      type="button"
+      class="btn-buscar-ci"
+      onclick="buscarCI()">
+      🔍 Verificar estudiante
+    </button>
+    <div
+      id="mensajeCI"
+      class="mensaje-ci">
+    </div>
+  </div>
+</div>
+<!-- =====================================================
+     VENTANA AUTOEVALUACIÓN
+===================================================== -->
+<div id="modalAutoevaluacion" class="modal-autoevaluacion">
+  <div class="autoevaluacion-contenido">
+    <button
+      type="button"
+      class="cerrar-autoevaluacion"
+      onclick="cerrarAutoevaluacion()">
+      ✕
+    </button>
+    <iframe
+      id="iframeAutoevaluacion"
+      src=""
+      frameborder="0"
+      width="100%"
+      height="700px"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
   <!-- ================= CONTENIDO ================= -->
     <section id="contenido" class="seccion activa">
-      <h2>Actividades de clase a distancia</h2>
+      <h2>Actividades de Aula Virtual</h2>
       <div class="contenido-interactivo">
 
   <!-- ================================= PRIMERO DE SECUNDARIA ===================================== -->
@@ -1154,22 +1246,9 @@
     <!--<div class="formulario-drive">
       <h3>📤 Subir tarea</h3>
       <iframe src="TU_FORM" width="100%" height="500"></iframe>
-    </div>
+    </div>-->
 
- <!-- Sección Autoevaluación -->
- <!--<section id="autoevaluacion" class="seccion">
-  <h2>Autoevaluación</h2>
-  <p>-->
-   <!-- 📋 <strong>Estimado estudiante:</strong><br>
-    Realiza tu autoevaluación y califícate de manera honesta.  
-    Ingresa únicamente una vez utilizando tu número de cédula de identidad.
-  </p>  
-  <div class="iframe-container">
-    <iframe src="https://humber720.github.io/autoevaluacion/" frameborder="0" width="100%" height="600px"></iframe>
-  </div>
-</section>-->
-
-    <!-- Script para cargar las notas y manejar la sesión -->
-    <script src="actividad.js"></script> 
+    <script src="actividad.js"></script>
+    <script src="autoevaluacions.js"></script> 
 </body>
 </html>
