@@ -94,7 +94,7 @@ const notasExamen = {
     "15053118": { puntaje: 58 }, // GUADALUPE MAMANI LOPEZ
     "13393796": { puntaje: 0 }, // MARIA ALICIA MAMANI MONTALVO
     "13119900": { puntaje: 82 }, // JHOVANA MATIAS CALLISAYA
-    "00000000": { puntaje: 64 }, // GENESIS CAMILA QUISPE AMARU
+    "12345670": { puntaje: 64 }, // GENESIS CAMILA QUISPE AMARU
     "15102057": { puntaje: 0 }, // YASMIN QUISPE APAZA
     "15049860": { puntaje: 61 }, // ALEJANDRA QUISPE MAMANI
     "15479403": { puntaje: 68 }, // LUZ NAYELLY QUISPE QUISPE
