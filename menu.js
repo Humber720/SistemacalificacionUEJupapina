@@ -35,6 +35,8 @@ const estudiantes = {
         "44444440": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "4to de Secundaria" },
         "55555550": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "5to de Secundaria" },
         "66666660": { nombre: "HUMBERTO", apellido: "YUPANQUI CONDORI", curso: "6to de Secundaria" },
+    //6tO DE SECUNDARIA   
+    " 15652837": { nombre: "YHORDY ALEXANDER", apellido: "BAUTISTA FLORES", curso: "6to de Primaria" },
     //1RO DE SECUNDARIA
     "15048000": { nombre: "DANIELA", apellido: "APAZA QUISPE", curso: "1ro de Secundaria" },
     "15681353": { nombre: "REBECA", apellido: "CADENA GUZMAN", curso: "1ro de Secundaria" },
@@ -132,7 +134,7 @@ const estudiantes = {
     "15053118": { nombre: "GUADALUPE", apellido: "MAMANI LOPEZ", curso: "4to de Secundaria" },
     "13393796": { nombre: "MARIA ALICIA", apellido: "MAMANI MONTALVO", curso: "4to de Secundaria" },
     "13119900": { nombre: "JHOVANA", apellido: "MATIAS CALLISAYA", curso: "4to de Secundaria" },
-    "00000000": { nombre: "GENESIS CAMILA", apellido: "QUISPE AMARU", curso: "4to de Secundaria" },
+    "12345670": { nombre: "GENESIS CAMILA", apellido: "QUISPE AMARU", curso: "4to de Secundaria" },
     "15102057": { nombre: "YASMIN", apellido: "QUISPE APAZA", curso: "4to de Secundaria" },
     "15049860": { nombre: "ALEJANDRA", apellido: "QUISPE MAMANI", curso: "4to de Secundaria" },
     "15479403": { nombre: "LUZ NAYELLY", apellido: "QUISPE QUISPE", curso: "4to de Secundaria" },
