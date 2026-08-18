@@ -1,0 +1,1458 @@
+/* =====================================================
+   AUTOEVALUACIÓN
+   CSS AISLADO - NO AFECTA LA CABECERA
+===================================================== */
+
+
+/* =====================================================
+   TARJETA PRINCIPAL
+===================================================== */
+
+.autoevaluacion-card {
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  padding: 30px;
+
+  margin: 20px auto;
+
+  width: 100%;
+  max-width: 600px;
+
+  text-align: center;
+
+  border-radius: 15px;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.autoevaluacion-card p {
+  margin: 0 0 10px;
+
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.autoevaluacion-card .texto-ayuda {
+  color: #666;
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   BOTÓN AUTOEVALUACIÓN
+===================================================== */
+
+.autoevaluacion-card .btn-autoevaluacion {
+  margin-top: 20px;
+
+  padding: 13px 25px;
+
+  border: none;
+
+  border-radius: 25px;
+
+  background: linear-gradient(
+    135deg,
+    #4facfe,
+    #00c6ff
+  );
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.autoevaluacion-card .btn-autoevaluacion:hover {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 6px 18px rgba(79,172,254,0.35);
+}
+
+.autoevaluacion-card .btn-autoevaluacion:active {
+  transform: scale(0.98);
+}
+
+
+/* =====================================================
+   MODAL CI
+===================================================== */
+
+.modal-ci {
+  display: none;
+
+  position: fixed;
+
+  z-index: 9999;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: rgba(0,0,0,0.55);
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* =====================================================
+   CONTENIDO MODAL CI
+===================================================== */
+
+.modal-ci-contenido {
+  position: relative;
+
+  width: 100%;
+  max-width: 400px;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  background: white;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.25);
+
+  animation:
+    aparecerCI 0.3s ease;
+}
+
+
+/* =====================================================
+   ICONO CI
+===================================================== */
+
+.modal-ci-contenido .icono-ci {
+  font-size: 45px;
+
+  margin-bottom: 10px;
+}
+
+
+/* =====================================================
+   TÍTULO CI
+===================================================== */
+
+.modal-ci-contenido h3 {
+  margin: 0 0 10px;
+
+  color: #2c3e50;
+
+  font-size: 22px;
+}
+
+
+/* =====================================================
+   TEXTO CI
+===================================================== */
+
+.modal-ci-contenido p {
+  margin: 0 0 15px;
+
+  color: #666;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   INPUT CI
+===================================================== */
+
+.modal-ci-contenido #inputCI,
+.modal-ci-contenido #ciEstudiante {
+  width: 100%;
+
+  padding: 13px;
+
+  box-sizing: border-box;
+
+  border: 2px solid #ddd;
+
+  border-radius: 10px;
+
+  background: #fff;
+
+  color: #2c3e50;
+
+  font-size: 17px;
+
+  text-align: center;
+
+  outline: none;
+}
+
+.modal-ci-contenido #inputCI:focus,
+.modal-ci-contenido #ciEstudiante:focus {
+  border-color: #4facfe;
+
+  box-shadow:
+    0 0 8px rgba(79,172,254,0.3);
+}
+
+
+/* =====================================================
+   BOTÓN BUSCAR
+===================================================== */
+
+.modal-ci-contenido .btn-buscar-ci {
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #43e97b,
+      #38f9d7
+    );
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.modal-ci-contenido .btn-buscar-ci:hover {
+  transform: scale(1.02);
+
+  box-shadow:
+    0 5px 15px rgba(67,233,123,0.25);
+}
+
+.modal-ci-contenido .btn-buscar-ci:active {
+  transform: scale(0.98);
+}
+
+
+/* =====================================================
+   CERRAR MODAL CI
+===================================================== */
+
+.modal-ci-contenido .cerrar-modal-ci {
+  position: absolute;
+
+  right: 12px;
+  top: 12px;
+
+  width: 35px;
+  height: 35px;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f1f1f1;
+
+  color: #555;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.modal-ci-contenido .cerrar-modal-ci:hover {
+  background: #ff5252;
+
+  color: white;
+
+  transform: rotate(90deg);
+}
+
+
+/* =====================================================
+   MENSAJE CI
+===================================================== */
+
+.modal-ci-contenido .mensaje-ci {
+  margin-top: 15px;
+
+  min-height: 20px;
+
+  font-size: 14px;
+
+  font-weight: bold;
+}
+
+
+/* =====================================================
+   MODAL AUTOEVALUACIÓN
+===================================================== */
+
+.modal-autoevaluacion {
+  display: none;
+
+  position: fixed;
+
+  z-index: 10000;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+
+  background: rgba(0,0,0,0.7);
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* =====================================================
+   CONTENIDO AUTOEVALUACIÓN
+===================================================== */
+
+.modal-autoevaluacion .autoevaluacion-contenido {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: 1100px;
+
+  margin: auto;
+
+  background: white;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 15px 50px rgba(0,0,0,0.3);
+}
+
+
+/* =====================================================
+   IFRAME
+===================================================== */
+
+.modal-autoevaluacion .autoevaluacion-contenido iframe {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  border: none;
+}
+
+
+/* =====================================================
+   BOTÓN CERRAR AUTOEVALUACIÓN
+===================================================== */
+
+.modal-autoevaluacion .cerrar-autoevaluacion {
+  position: absolute;
+
+  right: 12px;
+  top: 12px;
+
+  z-index: 10;
+
+  width: 35px;
+  height: 35px;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f1f1f1;
+
+  color: #555;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.modal-autoevaluacion .cerrar-autoevaluacion:hover {
+  background: #ff5252;
+
+  color: white;
+}
+
+
+/* =====================================================
+   ANIMACIÓN
+===================================================== */
+
+@keyframes aparecerCI {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-20px)
+      scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .autoevaluacion-card {
+    width: calc(100% - 20px);
+
+    margin: 15px auto;
+
+    padding: 25px 18px;
+
+    border-radius: 14px;
+  }
+
+  .autoevaluacion-card p {
+    font-size: 15px;
+  }
+
+  .autoevaluacion-card .texto-ayuda {
+    font-size: 13px;
+  }
+
+  .autoevaluacion-card .btn-autoevaluacion {
+    width: 100%;
+
+    padding: 13px 18px;
+
+    font-size: 15px;
+  }
+
+
+  /* Modal CI */
+
+  .modal-ci {
+    padding: 15px;
+  }
+
+  .modal-ci-contenido {
+    max-width: 400px;
+
+    padding: 25px 20px;
+  }
+
+  .modal-ci-contenido .icono-ci {
+    font-size: 40px;
+  }
+
+  .modal-ci-contenido h3 {
+    font-size: 20px;
+  }
+
+  .modal-ci-contenido #inputCI,
+  .modal-ci-contenido #ciEstudiante {
+    font-size: 16px;
+
+    padding: 12px;
+  }
+
+
+  /* Modal formulario */
+
+  .modal-autoevaluacion {
+    padding: 8px;
+  }
+
+  .modal-autoevaluacion .autoevaluacion-contenido {
+    border-radius: 8px;
+  }
+
+}
+
+
+/* =====================================================
+   CELULARES PEQUEÑOS
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .autoevaluacion-card {
+    width: calc(100% - 12px);
+
+    padding: 20px 14px;
+  }
+
+  .autoevaluacion-card p {
+    font-size: 14px;
+  }
+
+  .autoevaluacion-card .btn-autoevaluacion {
+    font-size: 14px;
+
+    padding:
+      12px 14px;
+  }
+
+  .modal-ci-contenido {
+    padding:
+      22px 16px;
+  }
+
+  .modal-ci-contenido h3 {
+    font-size: 18px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   AUTOEVALUACIÓN
+===================================================== */
+
+.autoevaluacion-card {
+  background: #ffffff;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.autoevaluacion-card p {
+  margin-bottom: 10px;
+}
+
+.texto-ayuda {
+  color: #666;
+}
+
+
+/* =====================================================
+   BOTÓN AUTOEVALUACIÓN
+===================================================== */
+
+.btn-autoevaluacion {
+  margin-top: 20px;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #4facfe, #00c6ff);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-autoevaluacion:hover {
+  transform: scale(1.05);
+}
+
+
+/* =====================================================
+   MODAL CI
+===================================================== */
+
+.modal-ci {
+  display: none;
+
+  position: fixed;
+  z-index: 9999;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.55);
+
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+
+.modal-ci-contenido {
+  position: relative;
+
+  background: white;
+
+  width: 100%;
+  max-width: 400px;
+
+  padding: 30px;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+
+  animation: aparecerCI 0.3s ease;
+}
+
+
+.icono-ci {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+
+.modal-ci-contenido h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+
+.modal-ci-contenido p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   INPUT CI
+===================================================== */
+
+#inputCI {
+  width: 100%;
+
+  padding: 13px;
+
+  border: 2px solid #ddd;
+
+  border-radius: 10px;
+
+  font-size: 17px;
+
+  text-align: center;
+
+  outline: none;
+}
+
+
+#inputCI:focus {
+  border-color: #4facfe;
+
+  box-shadow: 0 0 8px rgba(79,172,254,0.3);
+}
+
+
+/* =====================================================
+   BOTÓN BUSCAR
+===================================================== */
+
+.btn-buscar-ci {
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+
+.btn-buscar-ci:hover {
+  transform: scale(1.02);
+}
+
+
+/* =====================================================
+   CERRAR MODAL
+===================================================== */
+
+.cerrar-modal-ci,
+.cerrar-autoevaluacion {
+  position: absolute;
+
+  right: 12px;
+  top: 12px;
+
+  width: 35px;
+  height: 35px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f1f1f1;
+
+  color: #555;
+
+  font-size: 18px;
+
+  cursor: pointer;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+
+.cerrar-modal-ci:hover,
+.cerrar-autoevaluacion:hover {
+  background: #ff5252;
+  color: white;
+}
+
+
+/* =====================================================
+   MENSAJE
+===================================================== */
+
+.mensaje-ci {
+  margin-top: 15px;
+
+  font-weight: bold;
+
+  min-height: 20px;
+}
+
+
+/* =====================================================
+   MODAL AUTOEVALUACIÓN
+===================================================== */
+
+.modal-autoevaluacion {
+  display: none;
+
+  position: fixed;
+
+  z-index: 10000;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0,0,0,0.7);
+
+  padding: 20px;
+}
+
+
+.autoevaluacion-contenido {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: 1100px;
+
+  margin: auto;
+
+  background: white;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+
+.autoevaluacion-contenido iframe {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+}
+
+
+/* =====================================================
+   ANIMACIÓN
+===================================================== */
+
+@keyframes aparecerCI {
+
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .modal-ci {
+    padding: 15px;
+  }
+
+  .modal-ci-contenido {
+    padding: 25px 20px;
+  }
+
+  .autoevaluacion-contenido {
+    border-radius: 8px;
+  }
+
+}
+
+
+
+/* =====================================================
+   AUTOEVALUACIÓN - ESTILOS PRINCIPALES
+   Responsive: celular / tablet / laptop
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #eef7ff, #f8fbff);
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   CONTENEDOR PRINCIPAL
+===================================================== */
+
+.contenedor {
+  width: 100%;
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =====================================================
+   TÍTULOS
+===================================================== */
+
+.contenedor h2 {
+  text-align: center;
+  margin: 5px 0;
+  color: #1f4e79;
+}
+
+.contenedor h2:first-child {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.contenedor h2:nth-child(2) {
+  font-size: 21px;
+  color: #2980b9;
+}
+
+.contenedor h2:nth-child(3) {
+  font-size: 17px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+
+/* =====================================================
+   FORMULARIO
+===================================================== */
+
+#formulario {
+  width: 100%;
+}
+
+
+/* =====================================================
+   DATOS DEL ESTUDIANTE
+===================================================== */
+
+#formulario > label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: #34495e;
+}
+
+#formulario > input[type="text"] {
+  width: 100%;
+  padding: 13px 15px;
+  border: 2px solid #dce6ef;
+  border-radius: 10px;
+  background: #f5f8fb;
+  color: #2c3e50;
+  font-size: 16px;
+  font-weight: 600;
+  outline: none;
+}
+
+
+/* Datos bloqueados */
+
+#ci,
+#nombre,
+#curso {
+  cursor: not-allowed;
+}
+
+
+/* Diferenciar CI */
+
+#ci {
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+
+/* =====================================================
+   MENSAJES
+===================================================== */
+
+.mensaje {
+  text-align: center;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   PRESENTACIÓN
+===================================================== */
+
+.preguntaA {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #eaf6ff, #f7fbff);
+  border-left: 5px solid #3498db;
+  border-radius: 12px;
+}
+
+.preguntaA label {
+  display: block;
+  font-weight: 600;
+  color: #34495e;
+}
+
+
+/* =====================================================
+   INTRODUCCIÓN
+===================================================== */
+
+.pregunta {
+  position: relative;
+  margin-top: 20px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e1e8ef;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+}
+
+.pregunta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
+}
+
+.pregunta > label {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+
+/* =====================================================
+   RADIO BUTTONS
+===================================================== */
+
+.pregunta input[type="radio"] {
+  width: 19px;
+  height: 19px;
+  margin: 8px 8px 8px 2px;
+  vertical-align: middle;
+  accent-color: #3498db;
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   OPCIONES DE RESPUESTA
+===================================================== */
+
+.pregunta input[type="radio"] + * {
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   BOTÓN GUARDAR Y ENVIAR
+===================================================== */
+
+#btnEnviar {
+  width: 100%;
+  max-width: 350px;
+  margin-top: 30px;
+  padding: 15px 25px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: linear-gradient(
+    135deg,
+    #3498db,
+    #2980b9
+  );
+
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 5px 15px rgba(41, 128, 185, 0.30);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+#btnEnviar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(41, 128, 185, 0.40);
+}
+
+#btnEnviar:active {
+  transform: scale(0.98);
+}
+
+#btnEnviar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   SPINNER
+===================================================== */
+
+.spinner {
+  width: 35px;
+  height: 35px;
+
+  margin: 15px auto;
+
+  border: 4px solid #e0e0e0;
+  border-top: 4px solid #3498db;
+
+  border-radius: 50%;
+
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =====================================================
+   MODAL RESULTADO
+===================================================== */
+
+#modal {
+  display: none;
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 99999;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  justify-content: center;
+  align-items: center;
+
+  backdrop-filter: blur(4px);
+}
+
+
+/* =====================================================
+   CONTENIDO DEL MODAL
+===================================================== */
+
+.modal-contenido {
+  width: 100%;
+  max-width: 460px;
+
+  padding: 30px 25px;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.30);
+
+  animation: aparecerModal 0.3s ease;
+}
+
+
+@keyframes aparecerModal {
+
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+}
+
+
+/* =====================================================
+   MENSAJE DEL RESULTADO
+===================================================== */
+
+#modal-mensaje {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  margin-bottom: 15px !important;
+}
+
+
+/* =====================================================
+   PUNTAJE
+===================================================== */
+
+#modal-puntaje {
+  font-size: 18px !important;
+  margin: 15px 0 !important;
+}
+
+#puntaje-valor {
+  font-size: 28px;
+  font-weight: 800 !important;
+}
+
+
+/* =====================================================
+   BOTONES DEL MODAL
+===================================================== */
+
+#cerrar-modal,
+#descargarPDF {
+
+  min-width: 130px;
+
+  margin: 8px 5px !important;
+
+  padding: 12px 18px !important;
+
+  border: none !important;
+
+  border-radius: 9px !important;
+
+  color: white !important;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+#cerrar-modal {
+  background: #7f8c8d !important;
+}
+
+#descargarPDF {
+  background: linear-gradient(
+    135deg,
+    #2980b9,
+    #3498db
+  ) !important;
+}
+
+#cerrar-modal:hover,
+#descargarPDF:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+#cerrar-modal:active,
+#descargarPDF:active {
+  transform: scale(0.97);
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .contenedor {
+    max-width: 720px;
+    margin: 20px auto;
+    padding: 25px;
+  }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+  body {
+    background: #f4f8fc;
+  }
+
+  .contenedor {
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    padding: 18px 14px;
+    border-radius: 14px;
+  }
+
+
+  /* Títulos */
+
+  .contenedor h2:first-child {
+    font-size: 21px;
+  }
+
+  .contenedor h2:nth-child(2) {
+    font-size: 18px;
+  }
+
+  .contenedor h2:nth-child(3) {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+
+  /* Datos */
+
+  #formulario > input[type="text"] {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+
+  /* Presentación */
+
+  .preguntaA {
+    padding: 16px;
+    font-size: 14px;
+  }
+
+
+  /* Preguntas */
+
+  .pregunta {
+    padding: 17px 15px;
+    margin-top: 15px;
+    font-size: 15px;
+  }
+
+
+  .pregunta > label {
+    line-height: 1.5;
+  }
+
+
+  /* Radios más cómodos */
+
+  .pregunta input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin: 9px 8px 9px 0;
+  }
+
+
+  /* Botón */
+
+  #btnEnviar {
+    width: 100%;
+    max-width: none;
+    font-size: 16px;
+    padding: 14px;
+  }
+
+
+  /* Modal */
+
+  #modal {
+    padding: 12px;
+  }
+
+
+  .modal-contenido {
+    width: 100%;
+    padding: 25px 18px;
+    border-radius: 15px;
+  }
+
+
+  /* Botones del modal */
+
+  #cerrar-modal,
+  #descargarPDF {
+    width: 100%;
+    margin: 6px 0 !important;
+  }
+
+}
+
+
+/* =====================================================
+   CELULARES MUY PEQUEÑOS
+===================================================== */
+
+@media (max-width: 380px) {
+
+  .contenedor {
+    width: calc(100% - 12px);
+    padding: 14px 10px;
+  }
+
+  .contenedor h2:first-child {
+    font-size: 19px;
+  }
+
+  .contenedor h2:nth-child(2) {
+    font-size: 17px;
+  }
+
+  .pregunta {
+    padding: 15px 12px;
+    font-size: 14px;
+  }
+
+}
+
+
