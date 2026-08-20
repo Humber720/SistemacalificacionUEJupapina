@@ -19,9 +19,21 @@ const API_BANDA = "https://script.google.com/macros/s/AKfycbxxynNkb9zvet9uMLzWn3
 // INICIO AL CARGAR PÁGINA
 // ===============================
 window.addEventListener("DOMContentLoaded", async () => {
-
     const estudiante = JSON.parse(localStorage.getItem("estudiante"));
+        // ===============================
+    // MENSAJE DE CARGA
+    // ===============================
+    const tbody = document.getElementById("grades-table");
 
+    if (tbody) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align:center; font-weight:bold;">
+                    Cargando asistencia y puntaje...
+                </td>
+            </tr>
+        `;
+    }
     if (!estudiante) {
         alert("Debes iniciar sesión para ver esta página");
         window.location.href = "index.html";
@@ -120,7 +132,10 @@ function cargarEnsayos(estudiante) {
     const tbody = document.getElementById("grades-table");
     if (!tbody) return;
 
-    tbody.innerHTML = "";
+        // ===============================
+    // MENSAJE INTERACTIVO DE CARGA
+    // ===============================
+tbody.innerHTML = "";
 
 
     const ensayos = estudiante.banda?.ensayos || [];
