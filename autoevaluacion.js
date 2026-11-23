@@ -1298,7 +1298,7 @@ function generarPDF() {
     doc.setFontSize(16);
 
     doc.text(
-      "AUTOEVALUACIÓN - 2DO TRIMESTRE",
+      "AUTOEVALUACIÓN - 3ER TRIMESTRE",
       105,
       20,
       {
@@ -1479,7 +1479,7 @@ function generarPDF() {
     doc.setFontSize(9);
 
     doc.text(
-      "Autoevaluación de Educación Musical - 2do Trimestre 2026",
+      "Autoevaluación de Educación Musical - 3er Trimestre 2026",
       105,
       285,
       {
