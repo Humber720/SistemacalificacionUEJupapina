@@ -58,6 +58,7 @@ const estudiantes = {
     "15970059": { nombre: "ASBEL JESUS", apellido: "QUISPE MAMANI", curso: "1ro de Secundaria" },
     "16956276": { nombre: "GISEL SILAY", apellido: "QUISPE PAUCARA", curso: "1ro de Secundaria" },
     "14849873": { nombre: "MAILEN YAMILETH", apellido: "TICONA PAUCARA", curso: "1ro de Secundaria" },
+    "13550673": { nombre: "CHAVEZ AGUILERA", apellido: "JADE SHARON", curso: "1ro de Secundaria" },
 
     //2DO DE SECUNDARIA}
     "15982427": { nombre: "YESICA VALENTINA", apellido: "ALANOCA RIOS", curso: "2do de Secundaria" },
@@ -168,6 +169,7 @@ const estudiantes = {
     "15087156": { nombre: "ARTURO ANDRES", apellido: "ROQUE MENDOZA", curso: "5to de Secundaria" },
     "15786673": { nombre: "EDDY", apellido: "VARGAS CHAMBILLA", curso: "5to de Secundaria" },
     "12734905": { nombre: "ANGELO WILLIAMS", apellido: "VARGAS MAMANI", curso: "5to de Secundaria" },
+    "13193188": { nombre: "ZARATE MENECES", apellido: "SHEYLA ISABEL", curso: "5to de Secundaria" },
 
     //6to de Secundaria
     "13492936": { nombre: "ALEXIS SANTIAGO", apellido: "ALVARADO CARVAJAL", curso: "6to de Secundaria" },
